@@ -1,0 +1,22 @@
+---
+const { title = "Lambert iGEM" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://gbditp38bksey5gu.public.blob.vercel-storage.com/igemLogo.png" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
