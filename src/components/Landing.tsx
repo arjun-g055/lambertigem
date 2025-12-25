@@ -16,7 +16,7 @@ export default function Landing() {
         />
 
         <h1 className="text-6xl font-bold mb-2">
-          Lambert iGEM is cool
+          Lambert iGEM
         </h1>
 
         <p className="text-gray-500 mt-6">
