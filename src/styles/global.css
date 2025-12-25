@@ -15,6 +15,10 @@
 @import "@radix-ui/colors/violet-dark.css";
 @import "@radix-ui/colors/gray-dark.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   :root{
     --background: #FFFCF3;
