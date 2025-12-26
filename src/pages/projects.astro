@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Landing from "../components/Landing.tsx";
+import Navbar from "../components/navbar";
+import Lancet from "../components/projects/lancet";
+import Shield from "../components/projects/shield";
+import Cadlock23 from "../components/projects/cadlock23";
+import Cadlock22 from "../components/projects/cadlock22";
+import Agrosense21 from "../components/projects/agrosense21";
+import Agrosense20 from "../components/projects/agrosense20";
+---
+<BaseLayout title="Projects - Lambert iGEM">
+    <Navbar />
+    <h1 class="text-white text-6xl font-bold mt-24 mb-16 items-center justify-center flex [text-shadow:0_0_0.5em_#FFFFFF]">
+        Projects
+    </h1>
+
+    <div class="flex flex-row justify-center gap-32">
+      <Lancet />
+      <Shield />
+      <Cadlock23 />
+    </div>
+
+    <div class="flex flex-row justify-center gap-32 mt-12">
+      <Cadlock22 />
+      <Agrosense21 />
+      <Agrosense20 />
+    </div>
+</BaseLayout>

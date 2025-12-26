@@ -3,7 +3,7 @@ export default function Landing() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-5xl mx-auto p-8 text-center">
         <img
-          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/igemLogo.png"
+          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png"
           alt="iGEM logo"
           className="
                     mx-auto
@@ -15,7 +15,7 @@ export default function Landing() {
                     hover:drop-shadow-[0_0_4em_#C92C2A]"
         />
 
-        <h1 className="text-6xl font-bold mb-2">
+        <h1 className="text-white text-6xl font-bold mb-2 [text-shadow:0_0_2em_#FFFFFF]">
           Lambert iGEM
         </h1>
 

@@ -17,7 +17,7 @@
 
 @layer base {
   :root{
-    --background: #FFFCF3;
+    --background: #100f0f;
     --foreground: #0A0A0A; /* ~ 3.9% lightness */
     --card: #FFFFFF;
     --card-foreground: #0A0A0A;
