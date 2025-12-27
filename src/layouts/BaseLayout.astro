@@ -1,6 +1,8 @@
 ---
 const { title = "Lambert iGEM" } = Astro.props;
 import "../styles/global.css";
+import  SpeedInsights  from "@vercel/speed-insights/astro";
+import Analytics from '@vercel/analytics/astro';
 ---
 
 <!DOCTYPE html>
@@ -19,5 +21,7 @@ import "../styles/global.css";
   </head>
   <body>
     <slot />
+    <SpeedInsights />
+    <Analytics />
   </body>
 </html>
