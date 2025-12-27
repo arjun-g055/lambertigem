@@ -25,6 +25,9 @@ export default function Navbar() {
           <Logo />
         </a>
 
+        <p className="text-gray-500">
+          This website is under construction.</p>
+
         {/* Desktop buttons */}
         <div className="hidden items-center gap-12 md:flex">
           {NAV_ITEMS.map((item) => (
@@ -44,9 +47,6 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
-
-          <p className="text-gray-500">
-          This website is under construction.</p>
         </div>
 
         {/* Mobile toggle */}
@@ -61,7 +61,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-black/10 bg-[#f7f3ea]">
+        <div className="md:hidden border-t border-black/10 bg-[#323232]">
           <div className="flex flex-col px-6 py-4 gap-4">
             {NAV_ITEMS.map((item) => (
               <a
@@ -72,7 +72,7 @@ export default function Navbar() {
                   font-semibold
                   uppercase
                   tracking-[0.12em]
-                  text-[#0f5a2a]
+                  text-[#ffffff]
                 "
               >
                 {item.label}

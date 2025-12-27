@@ -17,7 +17,7 @@ import Chitinite14 from "../components/projects/chitinite14";
 import First from "../components/projects/first";
 ---
 <BaseLayout title="Projects - Lambert iGEM">
-    <Navbar />
+    <Navbar client:load />
     <h1 class="text-white text-6xl font-bold mt-24 items-center justify-center flex [text-shadow:0_0_0.5em_#FFFFFF]">
         Our Projects
     </h1>
@@ -27,7 +27,7 @@ import First from "../components/projects/first";
           <br />
           Click to view the project wiki.
         </p>
-
+<!--
     <div class="flex flex-row justify-center gap-32 mb-12">
       <Lancet />
       <Shield />
@@ -53,6 +53,23 @@ import First from "../components/projects/first";
     </div>
 
     <div class="flex flex-row justify-center gap-32 mb-12">
+      <First />
+    </div>
+-->
+
+    <div class="mx-auto max-w-8xl px-6 sm:px-10 flex flex-col lg:flex-row lg:flex-wrap justify-center gap-x-24 gap-y-8 mb-12">
+      <Lancet />
+      <Shield />
+      <Cadlock23 />
+      <Cadlock22 />
+      <Agrosense21 />
+      <Agrosense20 />
+      <Labyrinth />
+      <Captivate />
+      <Clipd />
+      <Switch />
+      <Chitinite15 />
+      <Chitinite14 />
       <First />
     </div>
 </BaseLayout>
