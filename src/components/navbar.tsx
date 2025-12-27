@@ -7,11 +7,11 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "About Us", href: "/about" },
+  //{ label: "About Us", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "People", href: "/people" },
-  { label: "Sponsors", href: "/sponsors" },
-  { label: "Contact Us", href: "/contact" },
+  //{ label: "People", href: "/people" },
+  //{ label: "Sponsors", href: "/sponsors" },
+  //{ label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -44,6 +44,9 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+
+          <p className="text-gray-500">
+          This website is under construction.</p>
         </div>
 
         {/* Mobile toggle */}
