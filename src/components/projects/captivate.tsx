@@ -4,31 +4,31 @@ export default function ProjectBox() {
   return (
     <div className="relative flex flex-col items-center">
       <h2 className="text-white text-3xl font-bold mb-6 [text-shadow:0_0_4em_#FFFFFF]">
-        2023
+        2018
       </h2>
 
       <a
-        href="https://2023.igem.wiki/lambert-ga"
+        href="https://2018.igem.org/Team:Lambert_GA"
         target="_blank"
         rel="noopener noreferrer"
         className="relative h-48 w-auto group cursor-pointer"
       >
         <img
-          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/cadlock23.png"
-          alt="Cadlock 2023"
+          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/captivate.png"
+          alt="Captivate 2018"
           className="
             h-48
             w-auto
             transition-opacity
             duration-300
-            drop-shadow-[0_0_0.25em_#CD88A4]
+            drop-shadow-[0_0_0.25em_#B3D7EA]
             group-hover:opacity-0
           "
         />
 
         <img
-          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/cadlock23-hover.png"
-          alt="Cadlock 2023 Description"
+          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/captivate-hover.png"
+          alt="Captivate 2018 Description"
           className="
             absolute inset-0
             h-48
@@ -36,7 +36,7 @@ export default function ProjectBox() {
             opacity-0
             transition-all
             duration-300
-            drop-shadow-[0_0_1em_#CD88A4]
+            drop-shadow-[0_0_1em_#B3D7EA]
             group-hover:opacity-100
             group-hover:scale-105
           "

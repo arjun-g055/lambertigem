@@ -8,22 +8,51 @@ import Cadlock23 from "../components/projects/cadlock23";
 import Cadlock22 from "../components/projects/cadlock22";
 import Agrosense21 from "../components/projects/agrosense21";
 import Agrosense20 from "../components/projects/agrosense20";
+import Labyrinth from "../components/projects/labyrinth";
+import Captivate from "../components/projects/captivate";
+import Clipd from "../components/projects/clipd";
+import Switch from "../components/projects/switch";
+import Chitinite15 from "../components/projects/chitinite15";
+import Chitinite14 from "../components/projects/chitinite14";
+import First from "../components/projects/first";
 ---
 <BaseLayout title="Projects - Lambert iGEM">
     <Navbar />
-    <h1 class="text-white text-6xl font-bold mt-24 mb-16 items-center justify-center flex [text-shadow:0_0_0.5em_#FFFFFF]">
-        Projects
+    <h1 class="text-white text-6xl font-bold mt-24 items-center justify-center flex [text-shadow:0_0_0.5em_#FFFFFF]">
+        Our Projects
     </h1>
 
-    <div class="flex flex-row justify-center gap-32">
+    <p class="text-gray-500 mt-6 items-center justify-center text-center mb-16">
+          Hover to see a short description.
+          <br />
+          Click to view the project wiki.
+        </p>
+
+    <div class="flex flex-row justify-center gap-32 mb-12">
       <Lancet />
       <Shield />
       <Cadlock23 />
     </div>
 
-    <div class="flex flex-row justify-center gap-32 mt-12">
+    <div class="flex flex-row justify-center gap-32 mb-12">
       <Cadlock22 />
       <Agrosense21 />
       <Agrosense20 />
+    </div>
+
+    <div class="flex flex-row justify-center gap-32 mb-12">
+      <Labyrinth />
+      <Captivate />
+      <Clipd />
+    </div>
+
+    <div class="flex flex-row justify-center gap-32 mb-12">
+      <Switch />
+      <Chitinite15 />
+      <Chitinite14 />
+    </div>
+
+    <div class="flex flex-row justify-center gap-32 mb-12">
+      <First />
     </div>
 </BaseLayout>

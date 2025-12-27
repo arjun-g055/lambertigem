@@ -20,7 +20,15 @@ export default function Landing() {
         </h1>
 
         <p className="text-gray-500 mt-6">
-          This website is under construction.
+          This website is under construction.{" "}
+          <br />
+          In the meantime, check out our projects{" "}
+          <a
+            href="/projects"
+            className="text-[#CB3835] underline hover:text-[#942B34] transition"
+          >
+            here
+          </a>.
         </p>
       </div>
     </div>

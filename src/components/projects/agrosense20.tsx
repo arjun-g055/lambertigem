@@ -3,19 +3,45 @@ import React from "react";
 export default function ProjectBox() {
   return (
     <div className="relative flex flex-col items-center">
-        <h2 className="text-white text-3xl font-bold mb-6 [text-shadow:0_0_4em_#FFFFFF]">2020</h2>
+      <h2 className="text-white text-3xl font-bold mb-6 [text-shadow:0_0_4em_#FFFFFF]">
+        2020
+      </h2>
+
+      <a
+        href="https://2020.igem.org/Team:Lambert_GA"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative h-48 w-auto group cursor-pointer"
+      >
         <img
-        src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/agrosense20.png"
-        alt="Lancet"
-        className="
-                    h-48
-                    w-auto
-                    transition
-                    duration-300
-                    drop-shadow-[0_0_0.25em_#BCE4DE]
-                    hover:drop-shadow-[0_0_1em_#BCE4DE]
-                    "
+          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/agrosense20.png"
+          alt="Agrosense 2020"
+          className="
+            h-48
+            w-auto
+            transition-opacity
+            duration-300
+            drop-shadow-[0_0_0.25em_#BCE4DE]
+            group-hover:opacity-0
+          "
         />
+
+        <img
+          src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/projects/agrosense20-hover.png"
+          alt="Agrosense 2020 Description"
+          className="
+            absolute inset-0
+            h-48
+            w-auto
+            opacity-0
+            transition-all
+            duration-300
+            drop-shadow-[0_0_1em_#BCE4DE]
+            group-hover:opacity-100
+            group-hover:scale-105
+          "
+        />
+      </a>
     </div>
   );
 }
