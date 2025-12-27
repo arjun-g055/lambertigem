@@ -25,7 +25,7 @@ export default function Navbar() {
           <Logo />
         </a>
 
-        <p className="text-gray-500">
+        <p className="text-gray-500 text-sm">
           This website is under construction.</p>
 
         {/* Desktop buttons */}
