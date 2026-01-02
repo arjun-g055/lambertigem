@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Landing from "../components/Landing.tsx";
+import Navbar from "../components/navbar";
+---
+
+<BaseLayout title="Lambert iGEM">
+    <Navbar />
+
+    <div class="flex flex-row items-center justify-center gap-x-8 mt-[20vh] mb-6">
+        <h1 class="text-white text-6xl font-bold [text-shadow:0_0_3em_#FFFFFF] mt-12">
+        Lambert
+        </h1>
+
+        <img
+        src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png"
+        alt="iGEM logo"
+        class="
+            h-48
+            w-auto
+            transition
+            duration-300
+            drop-shadow-[0_0_6em_#C92C2A]
+        "
+        />
+    </div>
+
+    <p class="text-[#BEBEBE] text-center">
+    Lorem Ipsum is simply dummy text of the
+    <br />
+    printing and typesetting industry. 
+    </p>
+
+    <div class="flex justify-center mt-10">
+        <a
+            href="#"
+            class="
+            px-8 py-3
+            text-lg font-semibold
+            text-white
+            rounded-2xl
+            bg-[#570000]
+            shadow-[0_0_20px_#570000]
+            transition
+            duration-300
+            hover:scale-105
+            hover:shadow-[0_0_35px_#770101]
+            active:scale-95
+            "
+        >
+            Learn More
+        </a>
+    </div>
+
+</BaseLayout>
