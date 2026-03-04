@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/navbar";
+import Team from "../components/team";
+---
+
+<BaseLayout title="Team - Lambert iGEM">
+    <Navbar client:load />
+    <Team client:load />
+</BaseLayout>

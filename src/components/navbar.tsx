@@ -9,9 +9,10 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   //{ label: "About Us", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "Team", href: "/team" },
   //{ label: "People", href: "/people" },
   //{ label: "Sponsors", href: "/sponsors" },
-  //{ label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -24,9 +25,6 @@ export default function Navbar() {
         <a href="/" className="flex items-center">
           <Logo />
         </a>
-
-        <p className="text-gray-500 text-sm">
-          This website is under construction.</p>
 
         {/* Desktop buttons */}
         <div className="hidden items-center gap-12 md:flex">
