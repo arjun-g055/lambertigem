@@ -9,7 +9,7 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   //{ label: "About Us", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Team", href: "/team" },
+  //{ label: "Team", href: "/team" },
   //{ label: "People", href: "/people" },
   //{ label: "Sponsors", href: "/sponsors" },
   { label: "Contact Us", href: "/contact" },
