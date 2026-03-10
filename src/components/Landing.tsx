@@ -378,7 +378,7 @@ function ReelSection() {
 }
 
 // ── Main Component ───────────────────────────────────────────────────────────
-const HERO_WORDS = ["LAMBERT", "INNOVATION", "DISCOVERY", "LAMBERT"];
+const HERO_WORDS = ["LAMBERT", "INNOVATION", "LAMBERT"];
 
 export default function Landing() {
   const containerRef = useRef<HTMLDivElement>(null);
