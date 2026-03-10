@@ -1,393 +1,283 @@
-import React, { useState, useEffect, useRef } from "react";
-import MemberWheel, { type Member } from "./team/MemberWheel";
-import AdvisorsSection, { type Advisor } from "./team/AdvisorsSection";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// ── Data ────────────────────────────────────────────────────────────────
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Types ────────────────────────────────────────────────────────────────
+
+type Member = {
+    name: string;
+    role: string;
+    image: string;
+};
+
+type Advisor = {
+    name: string;
+    description: string;
+    image?: string;
+};
+
+// ── Data ─────────────────────────────────────────────────────────────────
 
 const MEMBERS: Member[] = [
-    {
-        name: "Vedant Kalipatnapu",
-        role: "Co-Captain",
-        bio: "Junior, first year on iGEM. Enjoys trying new food, going to concerts, and reading.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/vedant-hs.webp",
-    },
-    {
-        name: "Harsha Poonepalle",
-        role: "Co-Captain",
-        bio: "Junior, second year on the team. Works on software and wiki development. Plays squash, watches football, and is learning French.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/harsha-hs.webp",
-    },
-    {
-        name: "Shashwat Balamurali",
-        role: "Co-Captain",
-        bio: "Junior, second year on iGEM. Works on modeling and wet lab. Plays cricket and loves exploring different cultures.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/shashwat-hs.webp",
-    },
-    {
-        name: "Jiwoo Han",
-        role: "Member",
-        bio: "Junior, first year on iGEM. Helps with wetlab and graphics. Collects playing cards and reads sci-fi.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/jiwoo-hs.webp",
-    },
-    {
-        name: "Veda Vudithyala",
-        role: "Member",
-        bio: "Junior, first year on the team. Self-described terrible cook with a passion for synthetic biology.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/veda-hs.webp",
-    },
-    {
-        name: "Keerthana Anumukonda",
-        role: "Member",
-        bio: "First year on the team. Enjoys reading and spending time with friends.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/keerthana-hs.webp",
-    },
-    {
-        name: "Rohan Kaushik",
-        role: "Member",
-        bio: "First year on iGEM. Part of Human Practices and Wetlab committees. Reads fantasy and watches horror movies.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/rohan-hs.webp",
-    },
-    {
-        name: "Aiden Lee",
-        role: "Member",
-        bio: "Sophomore, first year on the team. Works in wet lab. Plays tennis in his spare time.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/aiden-hs.webp",
-    },
-    {
-        name: "Arjun Gulati",
-        role: "Member",
-        bio: "Sophomore, first year on iGEM. Works on wetlab, hardware CAD, and wiki coding. Plays Rocket League.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/arjun-hs.webp",
-    },
+    { name: "Vedant Kalipatnapu", role: "Co-Captain", image: "https://static.igem.wiki/teams/5612/teampage/members/vedant-hs.webp" },
+    { name: "Harsha Poonepalle", role: "Co-Captain", image: "https://static.igem.wiki/teams/5612/teampage/members/harsha-hs.webp" },
+    { name: "Shashwat Balamurali", role: "Co-Captain", image: "https://static.igem.wiki/teams/5612/teampage/members/shashwat-hs.webp" },
+    { name: "Jiwoo Han", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/jiwoo-hs.webp" },
+    { name: "Veda Vudithyala", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/veda-hs.webp" },
+    { name: "Keerthana Anumukonda", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/keerthana-hs.webp" },
+    { name: "Rohan Kaushik", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/rohan-hs.webp" },
+    { name: "Aiden Lee", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/aiden-hs.webp" },
+    { name: "Arjun Gulati", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/arjun-hs.webp" },
 ];
 
 const ADVISORS: Advisor[] = [
     { name: "Kate Sharer", description: "Team Advisor", image: "https://static.igem.wiki/teams/5612/teampage/members/sharer-hs.webp" },
-    { name: "Catherine O'Haver", description: "Team Advisor", image: "https://static.igem.wiki/teams/5612/teampage/members/ohaver-hs.webp" },
 ];
 
-// ── Section config ──────────────────────────────────────────────────────
+// ── Member Card ──────────────────────────────────────────────────────────
 
-const SECTIONS = [
-    { id: "members", label: "Members", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197" },
-    { id: "advisors", label: "Advisors", icon: "M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
-] as const;
-
-// ── Molecule Navigator ──────────────────────────────────────────────────
-// A horizontal molecule diagram: each section is an atom connected by bonds.
-// The active atom pulses and glows, an electron orbits around it.
-
-// CSS for electron orbit animation (pure CSS, no re-renders)
-const MOLECULE_STYLE = `
-@keyframes electron-orbit {
-    from { offset-distance: 0%; }
-    to   { offset-distance: 100%; }
-}
-@keyframes pulse-ring {
-    0%   { r: 30; opacity: 0.3; }
-    100% { r: 40; opacity: 0; }
-}
-@keyframes electron-glow {
-    0%, 100% { opacity: 0.9; }
-    50%      { opacity: 0.4; }
-}
-`;
-
-function MoleculeNav({
-    activeIndex,
-    onChange,
-}: {
-    activeIndex: number;
-    onChange: (i: number) => void;
-}) {
-    const atomRadius = 32;
-    const bondLength = 120;
-    const svgWidth = SECTIONS.length * (atomRadius * 2 + bondLength) - bondLength + 60;
-    const svgHeight = 120;
-    const cy = svgHeight / 2;
+function MemberCard({ member }: { member: Member }) {
+    const isCaptain = member.role === "Co-Captain";
 
     return (
-        <div className="flex justify-center mb-12 overflow-x-auto px-4">
-            <style dangerouslySetInnerHTML={{ __html: MOLECULE_STYLE }} />
-            <svg
-                width={svgWidth}
-                height={svgHeight}
-                viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                className="shrink-0"
-            >
-                <defs>
-                    {/* Glow filter for active atom */}
-                    <filter id="atom-glow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="6" result="blur" />
-                        <feMerge>
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                    </filter>
-                    {/* Bond gradient */}
-                    <linearGradient id="bond-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#C92C2A" stopOpacity="0.4" />
-                        <stop offset="50%" stopColor="#D4A853" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="#C92C2A" stopOpacity="0.4" />
-                    </linearGradient>
-                    <linearGradient id="bond-inactive" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#7A6E63" stopOpacity="0.15" />
-                        <stop offset="100%" stopColor="#7A6E63" stopOpacity="0.15" />
-                    </linearGradient>
+        <div
+            data-member-card
+            className="group relative overflow-hidden rounded-xl bg-[#0D0608]"
+            style={{ aspectRatio: "3 / 4" }}
+        >
+            {/* Photo */}
+            <img
+                src={member.image}
+                alt={member.name}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+            />
 
-                    {/* Elliptical orbit paths for each atom (used by CSS offset-path) */}
-                    {SECTIONS.map((_, i) => {
-                        const cx = 30 + i * (atomRadius * 2 + bondLength) + atomRadius;
-                        const electronR = atomRadius + 10;
-                        return (
-                            <ellipse
-                                key={`orbit-path-${i}`}
-                                id={`orbit-path-${i}`}
-                                cx={cx}
-                                cy={cy}
-                                rx={electronR}
-                                ry={electronR * 0.5}
-                                fill="none"
-                            />
-                        );
-                    })}
-                </defs>
+            {/* Gradient overlay — darkens on hover for bio readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0608] via-[#0D0608]/30 to-transparent group-hover:via-[#0D0608]/50 transition-all duration-500" />
 
-                {/* Bonds between atoms */}
-                {SECTIONS.map((_, i) => {
-                    if (i === 0) return null;
-                    const x1 = 30 + (i - 1) * (atomRadius * 2 + bondLength) + atomRadius * 2;
-                    const x2 = 30 + i * (atomRadius * 2 + bondLength);
-                    const isBetweenActive = i === activeIndex || i - 1 === activeIndex;
-                    return (
-                        <g key={`bond-${i}`}>
-                            <line
-                                x1={x1} y1={cy - 3} x2={x2} y2={cy - 3}
-                                stroke={isBetweenActive ? "url(#bond-grad)" : "url(#bond-inactive)"}
-                                strokeWidth="1.5"
-                                className="transition-all duration-500"
-                            />
-                            <line
-                                x1={x1} y1={cy + 3} x2={x2} y2={cy + 3}
-                                stroke={isBetweenActive ? "url(#bond-grad)" : "url(#bond-inactive)"}
-                                strokeWidth="1.5"
-                                className="transition-all duration-500"
-                            />
-                        </g>
-                    );
-                })}
+            {/* Hover border glow */}
+            <div className="absolute inset-0 rounded-xl ring-1 ring-white/[0.06] group-hover:ring-[#C92C2A]/40 group-hover:shadow-[inset_0_0_40px_rgba(201,44,42,0.08)] transition-all duration-500 pointer-events-none" />
 
-                {/* Atoms */}
-                {SECTIONS.map((section, i) => {
-                    const cx = 30 + i * (atomRadius * 2 + bondLength) + atomRadius;
-                    const isActive = i === activeIndex;
-                    const electronR = atomRadius + 10;
+            {/* Co-captain gold accent line */}
+            {isCaptain && (
+                <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#D4A853] to-transparent" />
+            )}
 
-                    return (
-                        <g
-                            key={section.id}
-                            onClick={() => onChange(i)}
-                            className="cursor-pointer"
-                            role="button"
-                            tabIndex={0}
-                        >
-                            {/* Electron orbit ring (active only) */}
-                            {isActive && (
-                                <ellipse
-                                    cx={cx} cy={cy}
-                                    rx={electronR} ry={electronR * 0.5}
-                                    fill="none" stroke="#C92C2A"
-                                    strokeWidth="0.5" opacity="0.2"
-                                />
-                            )}
-
-                            {/* Outer shell ring */}
-                            <circle
-                                cx={cx} cy={cy} r={atomRadius}
-                                fill="none"
-                                stroke={isActive ? "#C92C2A" : "#7A6E63"}
-                                strokeWidth={isActive ? 1.5 : 0.5}
-                                opacity={isActive ? 0.8 : 0.3}
-                                filter={isActive ? "url(#atom-glow)" : undefined}
-                                className="transition-all duration-500"
-                            />
-
-                            {/* Inner nucleus */}
-                            <circle
-                                cx={cx} cy={cy} r={atomRadius - 6}
-                                fill={isActive ? "rgba(201,44,42,0.1)" : "rgba(13,6,8,0.6)"}
-                                stroke={isActive ? "#C92C2A" : "#7A6E63"}
-                                strokeWidth={isActive ? 1 : 0.3}
-                                opacity={isActive ? 1 : 0.3}
-                                className="transition-all duration-500"
-                            />
-
-                            {/* Pulse ring (active only) */}
-                            {isActive && (
-                                <circle
-                                    cx={cx} cy={cy} r={atomRadius - 2}
-                                    fill="none" stroke="#C92C2A"
-                                    strokeWidth="1"
-                                    style={{ animation: "pulse-ring 2s ease-out infinite" }}
-                                />
-                            )}
-
-                            {/* Icon */}
-                            <g transform={`translate(${cx - 10}, ${cy - 16})`}>
-                                <path
-                                    d={section.icon}
-                                    fill="none"
-                                    stroke={isActive ? "#F5F0EB" : "#7A6E63"}
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    transform="scale(0.83)"
-                                    className="transition-all duration-300"
-                                />
-                            </g>
-
-                            {/* Label */}
-                            <text
-                                x={cx} y={cy + 14}
-                                textAnchor="middle"
-                                fill={isActive ? "#F5F0EB" : "#7A6E63"}
-                                fontSize="9" fontWeight="300"
-                                letterSpacing="0.15em"
-                                className="uppercase transition-all duration-300 select-none"
-                                style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
-                            >
-                                {section.label}
-                            </text>
-
-                            {/* Orbiting electron — pure CSS animation, no re-renders */}
-                            {isActive && (
-                                <circle
-                                    r={3} fill="#D4A853"
-                                    style={{
-                                        offsetPath: `path("M${cx + electronR},${cy} A${electronR},${electronR * 0.5} 0 1,1 ${cx + electronR - 0.01},${cy}")`,
-                                        animation: "electron-orbit 2s linear infinite, electron-glow 1s ease-in-out infinite",
-                                    }}
-                                />
-                            )}
-                        </g>
-                    );
-                })}
-            </svg>
+            {/* Content overlay */}
+            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                <p
+                    className={`text-[10px] font-light tracking-[0.3em] uppercase mb-1.5 transition-colors duration-300 ${
+                        isCaptain ? "text-[#D4A853]" : "text-[#7A6E63] group-hover:text-[#B8A99A]"
+                    }`}
+                >
+                    {member.role}
+                </p>
+                <h3 className="text-[#F5F0EB] font-light text-lg tracking-[-0.01em]">
+                    {member.name}
+                </h3>
+            </div>
         </div>
     );
 }
 
-// ── Page Component ──────────────────────────────────────────────────────
+// ── Main Component ───────────────────────────────────────────────────────
 
 export default function Team() {
-    const [activeTab, setActiveTab] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
-    const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-    const handleTabChange = (i: number) => {
-        setActiveTab(i);
-        const section = sectionsRef.current[i];
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    };
-
-    // Track scroll position to update active tab
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const idx = sectionsRef.current.indexOf(
-                            entry.target as HTMLDivElement,
-                        );
-                        if (idx !== -1) setActiveTab(idx);
-                    }
+        const ctx = gsap.context(() => {
+            // Hero title clip-path reveal
+            gsap.to("[data-team-title]", {
+                clipPath: "inset(0 0% 0 0)",
+                duration: 1.4,
+                ease: "power4.inOut",
+                delay: 0.3,
+            });
+
+            // Decorative line expand
+            gsap.to("[data-team-line]", {
+                width: "200px",
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 1.0,
+            });
+
+            // Subtitle fade in
+            gsap.to("[data-team-sub]", {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 1.2,
+            });
+
+            // Section labels — slide in from left
+            gsap.utils.toArray("[data-section-label]").forEach((el) => {
+                gsap.from(el as Element, {
+                    scrollTrigger: {
+                        trigger: el as Element,
+                        start: "top 88%",
+                    },
+                    opacity: 0,
+                    x: -30,
+                    duration: 0.8,
+                    ease: "power3.out",
                 });
-            },
-            { threshold: 0.3 },
-        );
+            });
 
-        sectionsRef.current.forEach((el) => {
-            if (el) observer.observe(el);
-        });
+            // Member cards — stagger reveal on scroll
+            gsap.utils.toArray("[data-member-card]").forEach((card, i) => {
+                gsap.from(card as Element, {
+                    scrollTrigger: {
+                        trigger: card as Element,
+                        start: "top 88%",
+                        toggleActions: "play none none none",
+                    },
+                    opacity: 0,
+                    y: 60,
+                    duration: 0.8,
+                    delay: (i % 3) * 0.12,
+                    ease: "power3.out",
+                });
+            });
 
-        return () => observer.disconnect();
+            // Advisor cards — stagger reveal
+            gsap.utils.toArray("[data-advisor-card]").forEach((card, i) => {
+                gsap.from(card as Element, {
+                    scrollTrigger: {
+                        trigger: card as Element,
+                        start: "top 88%",
+                    },
+                    opacity: 0,
+                    y: 40,
+                    duration: 0.8,
+                    delay: i * 0.15,
+                    ease: "power3.out",
+                });
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
     }, []);
 
-    // Staggered entrance
-    useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        const items = container.querySelectorAll<HTMLElement>("[data-stagger-item]");
-
-        items.forEach((child) => {
-            child.style.opacity = "0";
-            child.style.transform = "translateY(32px)";
-            child.style.transition =
-                "opacity 0.7s cubic-bezier(0.25,0.1,0.25,1), transform 0.7s cubic-bezier(0.25,0.1,0.25,1)";
-        });
-
-        const obs = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    const el = entry.target as HTMLElement;
-                    const idx = Array.from(items).indexOf(el);
-                    setTimeout(() => {
-                        el.style.opacity = "1";
-                        el.style.transform = "translateY(0)";
-                    }, idx * 100);
-                    obs.unobserve(el);
-                });
-            },
-            { threshold: 0.1 },
-        );
-
-        items.forEach((child) => obs.observe(child));
-        return () => obs.disconnect();
-    }, []);
+    const captains = MEMBERS.filter((m) => m.role === "Co-Captain");
+    const members = MEMBERS.filter((m) => m.role !== "Co-Captain");
 
     return (
         <div ref={containerRef} className="min-h-screen text-[#F5F0EB]">
-            {/* Hero */}
-            <section data-stagger-item className="flex flex-col items-center pt-16 pb-8">
-                <p className="text-[#D4A853] text-xs font-light tracking-[0.3em] uppercase mb-4">
-                    OUR PEOPLE
-                </p>
-                <h1 className="text-5xl lg:text-6xl font-light tracking-[-0.03em] text-[#F5F0EB]">
-                    Team
+            {/* ── Hero ── */}
+            <section className="flex flex-col items-center pt-16 pb-6">
+                <h1
+                    data-team-title
+                    className="text-[#F5F0EB] font-light leading-[0.85] tracking-[-0.06em] relative z-10"
+                    style={{
+                        fontSize: "clamp(4rem, 14vw, 14rem)",
+                        clipPath: "inset(0 100% 0 0)",
+                    }}
+                >
+                    THE TEAM
                 </h1>
-                <p className="text-[#7A6E63] font-light text-sm mt-2 uppercase tracking-widest">
-                    Lambert High School
+
+                <div
+                    data-team-line
+                    className="h-px bg-gradient-to-r from-transparent via-[#C92C2A] to-transparent mt-8"
+                    style={{ width: 0 }}
+                />
+
+                <p
+                    data-team-sub
+                    className="text-[#7A6E63] font-light mt-6 text-center text-sm tracking-[0.3em] uppercase opacity-0"
+                    style={{ transform: "translateY(16px)" }}
+                >
+                    Lambert High School · Suwanee, Georgia
                 </p>
             </section>
 
-            {/* Molecule Navigator */}
-            <div data-stagger-item>
-                <MoleculeNav activeIndex={activeTab} onChange={handleTabChange} />
+            {/* ── Leadership ── */}
+            <section className="max-w-6xl mx-auto px-6 md:px-16 pt-20 pb-8">
+                <p
+                    data-section-label
+                    className="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
+                >
+                    Leadership
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                    {captains.map((member) => (
+                        <MemberCard key={member.name} member={member} />
+                    ))}
+                </div>
+            </section>
+
+            {/* ── Divider ── */}
+            <div className="max-w-6xl mx-auto px-6 md:px-16 py-8">
+                <div className="h-px bg-gradient-to-r from-transparent via-[#C92C2A]/20 to-transparent" />
             </div>
 
-            {/* Members Section */}
-            <div
-                data-stagger-item
-                ref={(el) => {
-                    sectionsRef.current[0] = el;
-                }}
-            >
-                <MemberWheel members={MEMBERS} />
+            {/* ── Team Members ── */}
+            <section className="max-w-6xl mx-auto px-6 md:px-16 pt-8 pb-8">
+                <p
+                    data-section-label
+                    className="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
+                >
+                    Team Members
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                    {members.map((member) => (
+                        <MemberCard key={member.name} member={member} />
+                    ))}
+                </div>
+            </section>
+
+            {/* ── Divider ── */}
+            <div className="max-w-6xl mx-auto px-6 md:px-16 py-8">
+                <div className="h-px bg-gradient-to-r from-transparent via-[#C92C2A]/20 to-transparent" />
             </div>
 
-            {/* Advisors Section */}
-            <div
-                data-stagger-item
-                ref={(el) => {
-                    sectionsRef.current[1] = el;
-                }}
-            >
-                <AdvisorsSection advisors={ADVISORS} />
-            </div>
+            {/* ── Advisors ── */}
+            <section className="max-w-6xl mx-auto px-6 md:px-16 pt-8 pb-28">
+                <p
+                    data-section-label
+                    className="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
+                >
+                    Advisors
+                </p>
+                <div className="flex flex-wrap justify-center gap-12 sm:gap-20">
+                    {ADVISORS.map((advisor) => (
+                        <div
+                            key={advisor.name}
+                            data-advisor-card
+                            className="group flex flex-col items-center text-center"
+                        >
+                            <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-1 ring-white/[0.06] group-hover:ring-[#C92C2A]/40 transition-all duration-500 mb-5">
+                                {advisor.image ? (
+                                    <img
+                                        src={advisor.image}
+                                        alt={advisor.name}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-gradient-to-br from-[#2a1010] to-[#1a0808] flex items-center justify-center">
+                                        <span className="text-[#5a2020] text-2xl font-light">
+                                            {advisor.name.charAt(0)}
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
+                            <h3 className="text-[#F5F0EB] font-light text-base tracking-[-0.01em]">
+                                {advisor.name}
+                            </h3>
+                            <p className="text-[#7A6E63] text-xs font-light tracking-[0.15em] uppercase mt-1.5">
+                                {advisor.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
     );
 }

@@ -16,14 +16,12 @@ function Avatar({
     member,
     size,
     isCenter,
-    isSelected,
     onClick,
     style,
 }: {
     member: Member;
     size: number;
     isCenter?: boolean;
-    isSelected: boolean;
     onClick: () => void;
     style?: React.CSSProperties;
 }) {
@@ -44,9 +42,7 @@ function Avatar({
                     w-full h-full rounded-full overflow-hidden transition-all duration-500
                     ${isCenter
                         ? "ring-2 ring-[#C92C2A] shadow-[0_0_30px_rgba(201,44,42,0.3)]"
-                        : isSelected
-                            ? "ring-2 ring-[#D4A853] shadow-[0_0_20px_rgba(212,168,83,0.2)]"
-                            : "ring-1 ring-[#5a1a1a]/60 hover:ring-[#C92C2A]/60 hover:shadow-[0_0_16px_rgba(201,44,42,0.15)]"
+                        : "ring-1 ring-[#5a1a1a]/60 hover:ring-[#C92C2A]/60 hover:shadow-[0_0_16px_rgba(201,44,42,0.15)]"
                     }
                 `}
             >
@@ -70,7 +66,6 @@ function Avatar({
                     </div>
                 )}
             </div>
-            {/* Name label for orbit avatars */}
             {!isCenter && (
                 <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] text-[#7A6E63] font-light whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
                     {member.name.split(" ")[0]}
@@ -80,9 +75,13 @@ function Avatar({
     );
 }
 
-// ── Gear spin keyframes (injected once via <style>) ─────────────────────
+// ── Styles ───────────────────────────────────────────────────────────────
 
-const GEAR_STYLE = `@keyframes gear-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`;
+const STYLES = `
+@keyframes gear-spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+@media (max-width: 520px)  { .wheel-root { --wheel-scale: 0.65; } }
+@media (min-width: 521px) and (max-width: 768px) { .wheel-root { --wheel-scale: 0.8; } }
+`;
 
 // ── Main Component ──────────────────────────────────────────────────────
 
@@ -91,23 +90,21 @@ export default function MemberWheel({ members }: { members: Member[] }) {
 
     const wheelSize = 560;
     const center = wheelSize / 2;
-    const orbitRadius = 215;
+    const orbitRadius = 195;
     const centerSize = 140;
     const orbitSize = 58;
+    const gearSize = wheelSize * 1.6;
 
-    // Build orbit: everyone except selected member
     const orbitMembers = members.filter((_, i) => i !== selectedIndex);
 
-    function handleSelect(globalIndex: number) {
-        setSelectedIndex(globalIndex);
+    function handleSelect(i: number) {
+        setSelectedIndex(i);
     }
 
-    // Map orbit index → global index (skipping selectedIndex)
     function orbitGlobalIndex(orbIdx: number): number {
         return orbIdx < selectedIndex ? orbIdx : orbIdx + 1;
     }
 
-    // Compute orbit positions
     const orbitPositions = orbitMembers.map((_, i) => {
         const angle = -Math.PI / 2 + (2 * Math.PI * i) / orbitMembers.length;
         return {
@@ -116,13 +113,11 @@ export default function MemberWheel({ members }: { members: Member[] }) {
         };
     });
 
-    const gearSize = wheelSize * 1.25;
-
     return (
         <section className="max-w-6xl mx-auto px-6 py-8">
-            <style dangerouslySetInnerHTML={{ __html: GEAR_STYLE }} />
+            <style dangerouslySetInnerHTML={{ __html: STYLES }} />
             <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
-                {/* Wheel — scales down on small screens */}
+                {/* Wheel */}
                 <div
                     className="wheel-root relative shrink-0 origin-center"
                     style={{
@@ -132,13 +127,7 @@ export default function MemberWheel({ members }: { members: Member[] }) {
                         transform: "scale(var(--wheel-scale, 1))",
                     }}
                 >
-                    {/* Inline responsive scale via CSS custom property */}
-                    <style dangerouslySetInnerHTML={{ __html: `
-                        @media (max-width: 520px) { .wheel-root { --wheel-scale: 0.7; } }
-                        @media (min-width: 521px) and (max-width: 768px) { .wheel-root { --wheel-scale: 0.85; } }
-                    ` }} />
-
-                    {/* Gear background — pure CSS rotation, no re-renders */}
+                    {/* Gear — centered on container, rotation around gear hole center */}
                     <img
                         src="/gear.png"
                         alt=""
@@ -149,20 +138,10 @@ export default function MemberWheel({ members }: { members: Member[] }) {
                             height: gearSize,
                             top: center - gearSize / 2,
                             left: center - gearSize / 2,
-                            opacity: 0.7,
+                            opacity: 0.65,
                             animation: "gear-spin 120s linear infinite",
+                            transformOrigin: "50% 48.3%",
                             willChange: "transform",
-                        }}
-                    />
-
-                    {/* Faint orbit ring */}
-                    <div
-                        className="absolute rounded-full border border-[#F5F0EB]/[0.04] pointer-events-none"
-                        style={{
-                            width: orbitRadius * 2,
-                            height: orbitRadius * 2,
-                            top: center - orbitRadius,
-                            left: center - orbitRadius,
                         }}
                     />
 
@@ -171,12 +150,8 @@ export default function MemberWheel({ members }: { members: Member[] }) {
                         member={members[selectedIndex]}
                         size={centerSize}
                         isCenter
-                        isSelected
                         onClick={() => {}}
-                        style={{
-                            left: center,
-                            top: center,
-                        }}
+                        style={{ left: center, top: center }}
                     />
 
                     {/* Orbiting avatars */}
@@ -188,12 +163,8 @@ export default function MemberWheel({ members }: { members: Member[] }) {
                                 key={gIdx}
                                 member={member}
                                 size={orbitSize}
-                                isSelected={false}
                                 onClick={() => handleSelect(gIdx)}
-                                style={{
-                                    left: pos.x,
-                                    top: pos.y,
-                                }}
+                                style={{ left: pos.x, top: pos.y }}
                             />
                         );
                     })}
