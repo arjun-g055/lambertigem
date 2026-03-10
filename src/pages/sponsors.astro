@@ -1,0 +1,430 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/navbar";
+import Footer from "../components/Footer.tsx";
+---
+
+<BaseLayout title="Sponsors - Lambert iGEM" description="Partner with Lambert iGEM to advance synthetic biology education and student research. Explore sponsorship tiers and invest in the next generation of scientists.">
+  <Navbar client:load />
+
+  <main class="relative w-full max-w-[100vw] overflow-x-hidden">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="relative flex flex-col items-center justify-center min-h-[70vh] pt-32 pb-20 md:pb-28 px-6">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#3a1a00_0%,_transparent_55%)] opacity-10 pointer-events-none"></div>
+
+      <h1 id="hero-title" class="text-[#F5F0EB] font-light tracking-[-0.04em] text-center relative z-10" style="font-size: clamp(3.5rem, 10vw, 11rem)">
+        <span class="hero-letter inline-block">S</span><span class="hero-letter inline-block">P</span><span class="hero-letter inline-block">O</span><span class="hero-letter inline-block">N</span><span class="hero-letter inline-block">S</span><span class="hero-letter inline-block">O</span><span class="hero-letter inline-block">R</span><span class="hero-letter inline-block">S</span>
+      </h1>
+
+      <p id="hero-sub" class="text-[#B8A99A] font-light mt-10 text-center text-lg md:text-xl max-w-2xl relative z-10 opacity-0">
+        Invest in the next generation of scientists and engineers.
+      </p>
+
+      <!-- Decorative line -->
+      <div id="hero-line" class="w-0 h-px bg-gradient-to-r from-transparent via-[#D4A853] to-transparent mt-12 relative z-10"></div>
+    </section>
+
+    <!-- ==================== IMPACT STATS (Flowing Text) ==================== -->
+    <section id="stats-section" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="flex flex-wrap justify-center gap-x-16 gap-y-12 md:gap-x-24">
+        <div class="stat-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5rem)" data-target="13" data-suffix="+">0</p>
+          <p class="text-[#7A6E63] text-xs uppercase tracking-[0.3em] mt-4 font-light">Years Competing</p>
+        </div>
+        <div class="stat-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5rem)" data-target="13">0</p>
+          <p class="text-[#7A6E63] text-xs uppercase tracking-[0.3em] mt-4 font-light">Research Projects</p>
+        </div>
+        <div class="stat-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5rem)" data-target="100" data-suffix="+">0</p>
+          <p class="text-[#7A6E63] text-xs uppercase tracking-[0.3em] mt-4 font-light">Team Alumni</p>
+        </div>
+        <div class="stat-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5rem)" data-target="7">0</p>
+          <p class="text-[#7A6E63] text-xs uppercase tracking-[0.3em] mt-4 font-light">Competition Awards</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY SPONSOR ==================== -->
+    <section id="why-sponsor" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <p class="why-label text-[#D4A853] text-xs font-light tracking-[0.3em] uppercase mb-4 text-center">Why Partner With Us</p>
+      <h2 class="why-heading text-[#F5F0EB] font-light tracking-[-0.03em] text-center mb-16 md:mb-20" style="font-size: clamp(2rem, 4vw, 3.25rem);">
+        Three reasons to sponsor Lambert iGEM
+      </h2>
+
+      <div class="flex flex-col gap-20 md:gap-28">
+        <!-- Brand Visibility -->
+        <div class="why-item flex flex-col md:flex-row gap-6 md:gap-16 items-start">
+          <p class="text-[#D4A853]/30 font-light tracking-[-0.04em] shrink-0" style="font-size: clamp(3rem, 5vw, 5rem)">01</p>
+          <div>
+            <h3 class="text-[#F5F0EB] font-light text-2xl md:text-3xl tracking-[-0.02em] mb-4">Brand Visibility</h3>
+            <p class="text-[#B8A99A] font-light text-base md:text-lg leading-relaxed max-w-2xl">
+              Sponsors are featured on our website, competition wiki, team merchandise, presentations at the international iGEM Jamboree, and all social media channels. Join a community of organizations investing in the next generation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Community Impact -->
+        <div class="why-item flex flex-col md:flex-row gap-6 md:gap-16 items-start">
+          <p class="text-[#D4A853]/30 font-light tracking-[-0.04em] shrink-0" style="font-size: clamp(3rem, 5vw, 5rem)">02</p>
+          <div>
+            <h3 class="text-[#F5F0EB] font-light text-2xl md:text-3xl tracking-[-0.02em] mb-4">Community Impact</h3>
+            <p class="text-[#B8A99A] font-light text-base md:text-lg leading-relaxed max-w-2xl">
+              Lambert iGEM doesn't just compete -- we conduct outreach to local schools, host workshops, and create educational content about synthetic biology. Your brand reaches thousands of students, parents, and educators in the Gwinnett County community.
+            </p>
+          </div>
+        </div>
+
+        <!-- Innovation Partnership -->
+        <div class="why-item flex flex-col md:flex-row gap-6 md:gap-16 items-start">
+          <p class="text-[#D4A853]/30 font-light tracking-[-0.04em] shrink-0" style="font-size: clamp(3rem, 5vw, 5rem)">03</p>
+          <div>
+            <h3 class="text-[#F5F0EB] font-light text-2xl md:text-3xl tracking-[-0.02em] mb-4">Innovation Partnership</h3>
+            <p class="text-[#B8A99A] font-light text-base md:text-lg leading-relaxed max-w-2xl">
+              Your sponsorship funds real laboratory research, giving students hands-on experience with techniques used in professional biotech labs. From PCR to gene cloning, our members gain skills that prepare them for careers in science and medicine.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== WHERE YOUR MONEY GOES ==================== -->
+    <section id="breakdown-section" class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <p class="breakdown-label text-[#D4A853] text-xs font-light tracking-[0.3em] uppercase mb-4 text-center">Transparency</p>
+      <h2 class="breakdown-heading text-[#F5F0EB] font-light tracking-[-0.03em] text-center mb-16 md:mb-20" style="font-size: clamp(2rem, 4vw, 3.25rem);">
+        Where Your Money Goes
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div class="budget-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5.5rem)" data-target="40" data-suffix="%">0</p>
+          <p class="text-[#B8A99A] text-sm font-light mt-4 leading-relaxed">Lab &amp; Equipment</p>
+        </div>
+        <div class="budget-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5.5rem)" data-target="30" data-suffix="%">0</p>
+          <p class="text-[#B8A99A] text-sm font-light mt-4 leading-relaxed">Competition Travel</p>
+        </div>
+        <div class="budget-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5.5rem)" data-target="20" data-suffix="%">0</p>
+          <p class="text-[#B8A99A] text-sm font-light mt-4 leading-relaxed">Community Outreach</p>
+        </div>
+        <div class="budget-item text-center">
+          <p class="count-number text-[#F5F0EB] font-light tracking-[-0.04em]" style="font-size: clamp(3rem, 6vw, 5.5rem)" data-target="10" data-suffix="%">0</p>
+          <p class="text-[#B8A99A] text-sm font-light mt-4 leading-relaxed">Operations</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section id="cta-section" class="py-24 md:py-32">
+      <div class="max-w-3xl mx-auto px-6 text-center flex flex-col items-center">
+        <h2 class="cta-heading text-[#F5F0EB] font-light tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+          Ready to Make a Difference?
+        </h2>
+        <p class="cta-sub text-[#B8A99A] font-light text-base md:text-lg mb-14 max-w-xl leading-relaxed">
+          Join the organizations supporting the next generation of scientists and engineers.
+        </p>
+        <a href="/contact" class="btn-morph px-12 py-4 text-[15px] font-medium text-[#0D0608] bg-[#D4A853] text-center hover:bg-[#E0BB6E] transition-all duration-500 cta-btn">
+          Become a Sponsor
+        </a>
+        <p class="cta-email text-[#7A6E63] text-sm font-light mt-10">
+          Questions? Email us at <a href="mailto:lambertigem@gmail.com" class="text-[#B8A99A] hover:text-[#F5F0EB] transition-colors duration-300 underline underline-offset-4 decoration-[#B8A99A]/30">lambertigem@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero letters */
+  .hero-letter {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  /* Stat items */
+  .stat-item {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  /* Why sponsor */
+  .why-label,
+  .why-heading {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .why-item {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  /* Budget breakdown */
+  .breakdown-label,
+  .breakdown-heading {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .budget-item {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  /* CTA */
+  .cta-heading {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .cta-sub {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .cta-btn {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .cta-email {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // =============================================
+  // SMOOTH SCROLL WITH LENIS
+  // =============================================
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time: number) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  // =============================================
+  // HERO — Letter-by-letter reveal
+  // =============================================
+  const heroLetters = document.querySelectorAll(".hero-letter");
+
+  gsap.to(heroLetters, {
+    opacity: 1,
+    y: 0,
+    duration: 1.2,
+    ease: "power4.out",
+    stagger: 0.06,
+    delay: 0.2,
+  });
+
+  gsap.to("#hero-sub", {
+    opacity: 1,
+    duration: 1,
+    delay: 0.9,
+    ease: "power3.out",
+  });
+
+  gsap.to("#hero-line", {
+    width: "160px",
+    duration: 1.2,
+    delay: 1.1,
+    ease: "power3.inOut",
+  });
+
+  // =============================================
+  // COUNTING NUMBER ANIMATION (shared for stats + budget)
+  // =============================================
+  const countNumbers = document.querySelectorAll(".count-number");
+
+  countNumbers.forEach((el) => {
+    const target = parseInt(el.getAttribute("data-target") || "0");
+    const suffix = el.getAttribute("data-suffix") || "";
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: target,
+          duration: 2.2,
+          ease: "expo.out",
+          onUpdate: () => {
+            (el as HTMLElement).textContent = Math.round(obj.val) + suffix;
+          },
+        });
+      },
+    });
+  });
+
+  // =============================================
+  // IMPACT STATS — Fade in + count
+  // =============================================
+  const statItems = document.querySelectorAll(".stat-item");
+
+  gsap.to(statItems, {
+    scrollTrigger: {
+      trigger: "#stats-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power3.out",
+    stagger: 0.12,
+  });
+
+  // =============================================
+  // WHY SPONSOR — Editorial stagger
+  // =============================================
+  gsap.to(".why-label", {
+    scrollTrigger: {
+      trigger: "#why-sponsor",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.out",
+  });
+
+  gsap.to(".why-heading", {
+    scrollTrigger: {
+      trigger: "#why-sponsor",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 0.1,
+    ease: "power3.out",
+  });
+
+  const whyItems = document.querySelectorAll(".why-item");
+
+  whyItems.forEach((item, i) => {
+    gsap.to(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+  });
+
+  // =============================================
+  // BUDGET BREAKDOWN — Large counting numbers
+  // =============================================
+  gsap.to(".breakdown-label", {
+    scrollTrigger: {
+      trigger: "#breakdown-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.out",
+  });
+
+  gsap.to(".breakdown-heading", {
+    scrollTrigger: {
+      trigger: "#breakdown-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 0.1,
+    ease: "power3.out",
+  });
+
+  const budgetItems = document.querySelectorAll(".budget-item");
+
+  gsap.to(budgetItems, {
+    scrollTrigger: {
+      trigger: "#breakdown-section",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power3.out",
+    stagger: 0.12,
+  });
+
+  // =============================================
+  // CTA SECTION — Entrance animations
+  // =============================================
+  gsap.to(".cta-heading", {
+    scrollTrigger: {
+      trigger: "#cta-section",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power3.out",
+  });
+
+  gsap.to(".cta-sub", {
+    scrollTrigger: {
+      trigger: "#cta-section",
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 0.15,
+    ease: "power3.out",
+  });
+
+  gsap.to(".cta-btn", {
+    scrollTrigger: {
+      trigger: "#cta-section",
+      start: "top 70%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    delay: 0.3,
+    ease: "power3.out",
+  });
+
+  gsap.to(".cta-email", {
+    scrollTrigger: {
+      trigger: "#cta-section",
+      start: "top 65%",
+      toggleActions: "play none none none",
+    },
+    opacity: 1,
+    duration: 0.8,
+    delay: 0.45,
+    ease: "power3.out",
+  });
+</script>

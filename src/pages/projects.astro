@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Landing from "../components/Landing.tsx";
 import Navbar from "../components/navbar";
+import Footer from "../components/Footer.tsx";
 import Lancet from "../components/projects/lancet";
 import Shield from "../components/projects/shield";
 import Cadlock23 from "../components/projects/cadlock23";
@@ -16,60 +16,285 @@ import Chitinite15 from "../components/projects/chitinite15";
 import Chitinite14 from "../components/projects/chitinite14";
 import First from "../components/projects/first";
 ---
-<BaseLayout title="Projects - Lambert iGEM">
-    <Navbar client:load />
-    <h1 class="text-white text-5xl lg:text-6xl font-bold mt-24 flex items-center justify-center [text-shadow:0_0_0.5em_#FFFFFF]">
-        Our Projects
+
+<BaseLayout title="Projects - Lambert iGEM" description="Explore 13 years of Lambert iGEM synthetic biology projects, from our first competition in 2013 to our latest project in 2025.">
+  <Navbar client:load />
+
+  <!-- Hero Section -->
+  <section class="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-6">
+    <p class="hero-eyebrow text-[#7A6E63] text-[11px] font-light tracking-[0.5em] uppercase mb-10 opacity-0 translate-y-4">
+      13 Years of Research
+    </p>
+
+    <h1 class="hero-title text-[#F5F0EB] font-light tracking-[-0.06em] text-center leading-[0.85] opacity-0"
+        style="font-size: clamp(4rem, 12vw, 11rem);">
+      PROJECTS
     </h1>
 
-    <p class="text-gray-500 mt-6 items-center justify-center text-center mb-16">
-          Hover to see a short description.
-          <br />
-          Click to view the project wiki.
+    <div class="hero-rule mt-10 h-px w-0 bg-[#C92C2A]/40"></div>
+
+    <p class="hero-subtitle text-[#B8A99A] mt-10 text-center max-w-md mx-auto text-[15px] font-light leading-[1.8] opacity-0 translate-y-6">
+      From heavy metal biosensing to agricultural diagnostics — synthetic biology research that pushes boundaries.
+    </p>
+  </section>
+
+  <!-- Featured Projects: Horizontal Scroll Showcase -->
+  <section class="horizontal-section relative z-10">
+    <div class="pin-wrap flex items-center gap-12 px-[8vw]">
+      <!-- Label panel -->
+      <div class="flex-shrink-0 w-[30vw] min-w-[280px] flex flex-col justify-center pr-8">
+        <p class="text-[#D4A853] text-[11px] font-light tracking-[0.4em] uppercase mb-4">Featured</p>
+        <h2 class="text-[#F5F0EB] text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.04em] leading-[1.1] mb-6">
+          Latest<br/>Research
+        </h2>
+        <div class="h-px w-16 bg-[#C92C2A]/50 mb-6"></div>
+        <p class="text-[#7A6E63] text-sm font-light leading-relaxed max-w-xs">
+          Our three most recent projects, representing the cutting edge of our synthetic biology research.
         </p>
-<!--
-    <div class="flex flex-row justify-center gap-32 mb-12">
-      <Lancet />
-      <Shield />
-      <Cadlock23 />
-    </div>
+      </div>
 
-    <div class="flex flex-row justify-center gap-32 mb-12">
-      <Cadlock22 />
-      <Agrosense21 />
-      <Agrosense20 />
-    </div>
+      <!-- Featured project cards -->
+      <div class="featured-card flex-shrink-0 w-[55vw] min-w-[340px] max-w-[600px] flex items-center justify-center py-12">
+        <Lancet />
+      </div>
+      <div class="featured-card flex-shrink-0 w-[55vw] min-w-[340px] max-w-[600px] flex items-center justify-center py-12">
+        <Shield />
+      </div>
+      <div class="featured-card flex-shrink-0 w-[55vw] min-w-[340px] max-w-[600px] flex items-center justify-center py-12">
+        <Cadlock23 />
+      </div>
 
-    <div class="flex flex-row justify-center gap-32 mb-12">
-      <Labyrinth />
-      <Captivate />
-      <Clipd />
+      <!-- End spacer -->
+      <div class="flex-shrink-0 w-[10vw]"></div>
     </div>
+  </section>
 
-    <div class="flex flex-row justify-center gap-32 mb-12">
-      <Switch />
-      <Chitinite15 />
-      <Chitinite14 />
+  <!-- Divider -->
+  <section class="relative z-10 py-24 md:py-32 px-6">
+    <div class="mx-auto max-w-5xl flex items-center gap-6">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent to-[#7A6E63]/20"></div>
+      <p class="text-[#7A6E63] text-[11px] font-light tracking-[0.4em] uppercase">Archive</p>
+      <div class="flex-1 h-px bg-gradient-to-l from-transparent to-[#7A6E63]/20"></div>
     </div>
+  </section>
 
-    <div class="flex flex-row justify-center gap-32 mb-12">
-      <First />
+  <!-- Remaining Projects: Clean Grid -->
+  <section class="relative z-10 pb-24 md:pb-32 px-6">
+    <div class="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20 place-items-center">
+      <div class="archive-card">
+        <Cadlock22 />
+      </div>
+      <div class="archive-card">
+        <Agrosense21 />
+      </div>
+      <div class="archive-card">
+        <Agrosense20 />
+      </div>
+      <div class="archive-card">
+        <Labyrinth />
+      </div>
+      <div class="archive-card">
+        <Captivate />
+      </div>
+      <div class="archive-card">
+        <Clipd />
+      </div>
+      <div class="archive-card">
+        <Switch />
+      </div>
+      <div class="archive-card">
+        <Chitinite15 />
+      </div>
+      <div class="archive-card">
+        <Chitinite14 />
+      </div>
+      <div class="archive-card">
+        <First />
+      </div>
     </div>
--->
+  </section>
 
-    <div class="mx-auto max-w-8xl px-6 sm:px-10 flex flex-col lg:flex-row lg:flex-wrap justify-center gap-x-24 gap-y-8 mb-12">
-      <Lancet />
-      <Shield />
-      <Cadlock23 />
-      <Cadlock22 />
-      <Agrosense21 />
-      <Agrosense20 />
-      <Labyrinth />
-      <Captivate />
-      <Clipd />
-      <Switch />
-      <Chitinite15 />
-      <Chitinite14 />
-      <First />
-    </div>
+  <Footer />
 </BaseLayout>
+
+<style>
+  /* Hero initial states */
+  .hero-title {
+    will-change: transform, opacity;
+  }
+
+  /* Horizontal scroll section */
+  .horizontal-section {
+    overflow: hidden;
+  }
+
+  .pin-wrap {
+    will-change: transform;
+    height: 100vh;
+  }
+
+  /* Featured cards */
+  .featured-card {
+    opacity: 0;
+    transform: scale(0.92);
+    will-change: transform, opacity;
+  }
+
+  /* Archive cards */
+  .archive-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    will-change: transform, opacity;
+  }
+
+  /* Mobile: disable horizontal scroll pin, stack vertically */
+  @media (max-width: 768px) {
+    .pin-wrap {
+      flex-direction: column;
+      gap: 3rem;
+      padding: 0 1.5rem;
+    }
+
+    .pin-wrap > div {
+      width: 100% !important;
+      min-width: unset !important;
+      max-width: unset !important;
+    }
+
+    .featured-card {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // -- Lenis smooth scroll --
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time: number) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+
+  // -- Hero animations --
+  const tl = gsap.timeline({ delay: 0.3 });
+
+  tl.to(".hero-title", {
+    opacity: 1,
+    duration: 1.2,
+    ease: "power2.out",
+  });
+
+  tl.to(".hero-eyebrow", {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.out",
+  }, "-=0.7");
+
+  tl.to(".hero-rule", {
+    width: "120px",
+    duration: 1,
+    ease: "power2.inOut",
+  }, "-=0.5");
+
+  tl.to(".hero-subtitle", {
+    opacity: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+  }, "-=0.6");
+
+  // -- Horizontal scroll showcase (desktop only) --
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  if (!isMobile) {
+    const pinWrap = document.querySelector(".pin-wrap") as HTMLElement;
+    const horizontalSection = document.querySelector(".horizontal-section") as HTMLElement;
+
+    if (pinWrap && horizontalSection) {
+      const getScrollAmount = () => -(pinWrap.scrollWidth - window.innerWidth);
+
+      const horizontalTween = gsap.to(pinWrap, {
+        x: () => getScrollAmount(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: horizontalSection,
+          start: "top top",
+          end: () => `+=${Math.abs(getScrollAmount())}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // Featured cards fade in as they enter the viewport
+      const featuredCards = gsap.utils.toArray<HTMLElement>(".featured-card");
+      featuredCards.forEach((card) => {
+        gsap.to(card, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: horizontalTween,
+            start: "left 85%",
+            end: "left 50%",
+            scrub: 0.5,
+          },
+        });
+      });
+    }
+  }
+
+  // -- Archive cards: staggered scroll reveal --
+  const archiveCards = gsap.utils.toArray<HTMLElement>(".archive-card");
+
+  ScrollTrigger.batch(archiveCards, {
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.1,
+        overwrite: true,
+      });
+    },
+    start: "top 90%",
+  });
+
+  // -- Subtle scale on scroll for archive cards --
+  archiveCards.forEach((card) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: "top 80%",
+      end: "bottom 20%",
+      onUpdate: (self) => {
+        const center = 1 - Math.abs(self.progress - 0.5) * 2;
+        const scaleVal = 1 + center * 0.03;
+        gsap.to(card, {
+          scale: scaleVal,
+          duration: 0.4,
+          ease: "power1.out",
+          overwrite: "auto",
+        });
+      },
+    });
+  });
+</script>

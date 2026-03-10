@@ -1,80 +1,236 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Nav from "../components/navbar";
+import Navbar from "../components/navbar";
 import Form from "../components/form.tsx";
+import Footer from "../components/Footer.tsx";
 ---
 
-<BaseLayout title="Contact Us">
-    <div
-        class="min-h-screen bg-black text-white relative font-sans w-full max-w-[100vw] overflow-x-hidden pb-20"
-    >
-        {/* Glow effects */}
-        <div
-            class="absolute bottom-[-10%] left-[-10%] w-[60%] h-[80%] bg-[#5A0A0A]/40 blur-[140px] rounded-full pointer-events-none z-0"
-        >
-        </div>
+<BaseLayout title="Contact Us - Lambert iGEM" description="Get in touch with Lambert iGEM. We'd love to hear from you.">
+  <div class="min-h-screen text-[#F5F0EB] relative font-sans w-full max-w-[100vw] overflow-x-hidden">
 
-        <div class="relative z-20">
-            <Nav />
-        </div>
-
-        <main
-            class="max-w-[1400px] w-full mx-auto px-8 md:px-16 py-12 md:py-16 relative z-10 flex flex-col"
-        >
-            <h1
-                class="text-4xl md:text-5xl font-bold text-center mb-16 md:mb-24 mt-8 tracking-tight font-sans"
-            >
-                Contact Us
-            </h1>
-
-            <div
-                class="w-full grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-start mt-4"
-            >
-                {/* Left Column */}
-                <div class="flex flex-col space-y-12">
-                    <h2
-                        class="text-5xl md:text-[3.5rem] font-bold leading-tight tracking-tight mb-2"
-                    >
-                        Tell us about your<br />story
-                    </h2>
-
-                    <div
-                        class="flex flex-col gap-10 text-[#D1D1D1] text-lg mt-8"
-                    >
-                        <div class="flex items-center gap-6">
-                            <img
-                                src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/greenLogo.png"
-                                alt="Package"
-                                class="w-12 h-12 object-contain"
-                            />
-                            <p>We will get back to you in 3-5 business days.</p>
-                        </div>
-
-                        <div class="flex items-center gap-6">
-                            <img
-                                src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/silverLogo.png"
-                                alt="Package"
-                                class="w-12 h-12 object-contain"
-                            />
-                            <p>Send us some feedback!</p>
-                        </div>
-
-                        <div class="flex items-center gap-6">
-                            <img
-                                src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/bluePink.png"
-                                alt="Package"
-                                class="w-12 h-12 object-contain"
-                            />
-                            <p>In the meantime, check out our other pages.</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Right Column */}
-                <div class="w-full flex justify-end pt-16">
-                    <Form client:load />
-                </div>
-            </div>
-        </main>
+    <div class="relative z-20">
+      <Navbar client:load />
     </div>
+
+    <main class="relative z-10">
+
+      <!-- ==================== HERO ==================== -->
+      <section class="max-w-6xl w-full mx-auto px-6 md:px-16 pt-32 pb-16 md:pb-24">
+        <div class="overflow-hidden">
+          <h1 id="contact-hero" class="font-light tracking-[-0.04em] text-[#F5F0EB] opacity-0" style="font-size: clamp(4rem, 12vw, 11rem); line-height: 0.9;">
+            <span class="hero-char inline-block">C</span><span class="hero-char inline-block">O</span><span class="hero-char inline-block">N</span><span class="hero-char inline-block">T</span><span class="hero-char inline-block">A</span><span class="hero-char inline-block">C</span><span class="hero-char inline-block">T</span>
+          </h1>
+        </div>
+        <div id="hero-line" class="w-0 h-px bg-gradient-to-r from-[#C92C2A] to-transparent mt-8"></div>
+      </section>
+
+      <!-- ==================== TWO-COLUMN: INFO + FORM ==================== -->
+      <section class="max-w-6xl w-full mx-auto px-6 md:px-16 py-16 md:py-24">
+        <div class="w-full grid md:grid-cols-[1fr_1.2fr] gap-16 md:gap-24 items-start">
+
+          <!-- Left Column — Info -->
+          <div class="flex flex-col gap-16 md:gap-20 pt-4">
+
+            <!-- Magnetic heading -->
+            <div id="magnetic-heading" class="overflow-hidden">
+              <h2 class="contact-heading font-light leading-[1.05] tracking-[-0.03em] text-[#F5F0EB]" style="font-size: clamp(2.2rem, 5vw, 3.8rem);">
+                <span class="mag-letter inline-block">T</span><span class="mag-letter inline-block">e</span><span class="mag-letter inline-block">l</span><span class="mag-letter inline-block">l</span><span class="mag-letter inline-block">&nbsp;</span><span class="mag-letter inline-block">u</span><span class="mag-letter inline-block">s</span><span class="mag-letter inline-block">&nbsp;</span><span class="mag-letter inline-block">a</span><span class="mag-letter inline-block">b</span><span class="mag-letter inline-block">o</span><span class="mag-letter inline-block">u</span><span class="mag-letter inline-block">t</span><br /><span class="mag-letter inline-block">y</span><span class="mag-letter inline-block">o</span><span class="mag-letter inline-block">u</span><span class="mag-letter inline-block">r</span><span class="mag-letter inline-block">&nbsp;</span><span class="mag-letter inline-block text-[#C92C2A]">s</span><span class="mag-letter inline-block text-[#C92C2A]">t</span><span class="mag-letter inline-block text-[#C92C2A]">o</span><span class="mag-letter inline-block text-[#C92C2A]">r</span><span class="mag-letter inline-block text-[#C92C2A]">y</span>
+              </h2>
+            </div>
+
+            <!-- Info items -->
+            <div class="flex flex-col gap-10">
+              <div class="info-item">
+                <p class="text-[#7A6E63] text-xs font-light tracking-[0.25em] uppercase mb-2">Response Time</p>
+                <p class="text-[#B8A99A] font-light text-base md:text-lg leading-relaxed">We will get back to you within 3-5 business days.</p>
+              </div>
+
+              <div class="info-item">
+                <p class="text-[#7A6E63] text-xs font-light tracking-[0.25em] uppercase mb-2">Feedback</p>
+                <p class="text-[#B8A99A] font-light text-base md:text-lg leading-relaxed">We appreciate hearing from students, sponsors, and collaborators alike.</p>
+              </div>
+
+              <div class="info-item">
+                <p class="text-[#7A6E63] text-xs font-light tracking-[0.25em] uppercase mb-2">Email</p>
+                <a href="mailto:lambertigem@gmail.com" class="text-[#F5F0EB] font-light text-base md:text-lg hover:text-[#D4A853] transition-colors duration-300">lambertigem@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column — Form -->
+          <div class="contact-right w-full flex justify-end">
+            <Form client:load />
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <Footer />
 </BaseLayout>
+
+<style>
+  section {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Hero characters start hidden */
+  .hero-char {
+    opacity: 0;
+    transform: translateY(100%) rotateX(90deg);
+    transform-origin: bottom center;
+  }
+
+  /* Magnetic letters base style */
+  .mag-letter {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+  }
+
+  /* Info items start offscreen left */
+  .info-item {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  /* Contact right (form) starts hidden */
+  .contact-right {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // =============================================
+  // SMOOTH SCROLL WITH LENIS
+  // =============================================
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time: number) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  // =============================================
+  // 1. HERO — "CONTACT" letter-by-letter reveal
+  // =============================================
+  const heroEl = document.getElementById("contact-hero");
+  if (heroEl) {
+    gsap.set(heroEl, { opacity: 1 });
+  }
+
+  const heroChars = document.querySelectorAll(".hero-char");
+
+  gsap.to(heroChars, {
+    opacity: 1,
+    y: "0%",
+    rotateX: 0,
+    duration: 1.2,
+    ease: "expo.out",
+    stagger: 0.06,
+    delay: 0.3,
+  });
+
+  // Decorative line expand
+  gsap.to("#hero-line", {
+    width: "200px",
+    duration: 1.4,
+    ease: "expo.out",
+    delay: 0.8,
+  });
+
+  // =============================================
+  // 2. LEFT COLUMN — Heading slide in
+  // =============================================
+  gsap.from(".contact-heading", {
+    x: -100,
+    opacity: 0,
+    duration: 1.2,
+    delay: 0.6,
+    ease: "elastic.out(1, 0.75)",
+  });
+
+  // =============================================
+  // 3. INFO ITEMS — Staggered elastic slide-in
+  // =============================================
+  const infoItems = document.querySelectorAll(".info-item");
+
+  gsap.to(infoItems, {
+    x: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.15,
+    delay: 0.9,
+    ease: "elastic.out(1, 0.8)",
+  });
+
+  // =============================================
+  // 4. FORM — Slide in from right
+  // =============================================
+  gsap.to(".contact-right", {
+    x: 0,
+    opacity: 1,
+    duration: 1.2,
+    delay: 0.7,
+    ease: "expo.out",
+  });
+
+  // =============================================
+  // 5. MAGNETIC TEXT EFFECT — Letters shift toward mouse
+  // =============================================
+  const magneticHeading = document.getElementById("magnetic-heading");
+  const magLetters = document.querySelectorAll(".mag-letter") as NodeListOf<HTMLElement>;
+
+  if (magneticHeading && magLetters.length > 0 && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const MAGNETIC_RANGE = 200;  // px radius of influence
+    const MAGNETIC_STRENGTH = 12; // max displacement in px
+
+    const handleMouseMove = (e: MouseEvent) => {
+      magLetters.forEach((letter) => {
+        const rect = letter.getBoundingClientRect();
+        const letterCenterX = rect.left + rect.width / 2;
+        const letterCenterY = rect.top + rect.height / 2;
+
+        const deltaX = e.clientX - letterCenterX;
+        const deltaY = e.clientY - letterCenterY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        if (distance < MAGNETIC_RANGE) {
+          const force = (1 - distance / MAGNETIC_RANGE);
+          const moveX = deltaX * force * (MAGNETIC_STRENGTH / MAGNETIC_RANGE) * 2;
+          const moveY = deltaY * force * (MAGNETIC_STRENGTH / MAGNETIC_RANGE) * 2;
+          letter.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        } else {
+          letter.style.transform = "translate(0, 0)";
+        }
+      });
+    };
+
+    const handleMouseLeave = () => {
+      magLetters.forEach((letter) => {
+        letter.style.transform = "translate(0, 0)";
+      });
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    magneticHeading.addEventListener("mouseleave", handleMouseLeave);
+
+    // Reset on scroll to prevent stuck letters
+    lenis.on("scroll", () => {
+      magLetters.forEach((letter) => {
+        letter.style.transform = "translate(0, 0)";
+      });
+    });
+  }
+</script>

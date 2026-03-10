@@ -2,9 +2,44 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/navbar";
 import Team from "../components/team";
+import Footer from "../components/Footer.tsx";
 ---
 
-<BaseLayout title="Team - Lambert iGEM">
-    <Navbar client:load />
+<BaseLayout title="Team - Lambert iGEM" description="Meet the Lambert iGEM team members, advisors, and alumni.">
+  <Navbar client:load />
+  <div id="team-wrapper" class="pt-24">
     <Team client:load />
+  </div>
+  <Footer />
 </BaseLayout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Lenis smooth scroll ──────────────────────────
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time: number) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+
+  // ── Fade-in the team wrapper on load ─────────────
+  gsap.from("#team-wrapper", {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    ease: "power3.out",
+    delay: 0.2,
+  });
+</script>

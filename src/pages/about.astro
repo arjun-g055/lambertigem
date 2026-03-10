@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/navbar";
+import Footer from "../components/Footer.tsx";
+import ProjectTimeline from "../components/ProjectTimeline.tsx";
+---
+
+<BaseLayout title="About — Lambert iGEM">
+    <Navbar client:load />
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
+        <h1 id="hero-title" class="text-[#F5F0EB] font-light leading-[0.85] tracking-[-0.06em] relative z-10" style="font-size: clamp(5rem, 15vw, 18rem); clip-path: inset(0 100% 0 0)">
+            ABOUT
+        </h1>
+
+        <div id="hero-line" class="w-0 h-px bg-gradient-to-r from-transparent via-[#C92C2A] to-transparent mt-10 z-10"></div>
+
+        <p id="hero-sub" class="text-[#7A6E63] font-light mt-8 text-center text-sm tracking-[0.3em] uppercase relative z-10 opacity-0">
+            Pioneering synthetic biology since 2013
+        </p>
+    </section>
+
+    <!-- ==================== WHAT IS iGEM ==================== -->
+    <section id="igem-section" class="relative z-10 py-24 md:py-32 px-6 md:px-16">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24 items-start">
+                <div>
+                    <p class="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-6">For Newcomers</p>
+                    <h2 class="text-[#F5F0EB] font-light tracking-[-0.03em]" style="font-size: clamp(2rem, 4vw, 3.5rem)">
+                        What is<br/>iGEM?
+                    </h2>
+                </div>
+                <div class="flex flex-col gap-8">
+                    <p class="text-[#B8A99A] font-light leading-[1.8] text-base md:text-lg">
+                        The International Genetically Engineered Machine competition is the premier undergraduate synthetic biology competition in the world, bringing together over 400 teams from 40+ countries each year.
+                    </p>
+                    <p class="text-[#B8A99A] font-light leading-[1.8] text-base md:text-lg">
+                        Lambert iGEM is one of the few <span class="text-[#F5F0EB]">American high school teams</span> in the world's premier synthetic biology competition. Since 2013, our students have gained real laboratory experience, published research, and developed skills in molecular biology, computational modeling, and science communication.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MISSION ==================== -->
+    <section id="mission-section" class="relative z-10 py-24 md:py-32 px-6 md:px-16">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10">Our Mission</p>
+            <p class="text-[#F5F0EB]/80 font-light tracking-[-0.02em] leading-[1.4]" style="font-size: clamp(1.5rem, 3vw, 2.5rem)">
+                To inspire the next generation of scientists through hands-on synthetic biology research, community outreach, and interdisciplinary collaboration. We believe that high school students can drive real scientific innovation and make contributions that matter.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== 3D TIMELINE ==================== -->
+    <section id="timeline-section" class="relative z-10 py-8">
+        <div class="max-w-6xl mx-auto px-6 md:px-16 mb-12">
+            <p class="text-[#7A6E63] text-[11px] font-light tracking-[0.3em] uppercase mb-6">Our Journey</p>
+            <h2 class="text-[#F5F0EB] font-light tracking-[-0.03em]" style="font-size: clamp(2rem, 4vw, 3.5rem)">
+                13 years of innovation.
+            </h2>
+        </div>
+        <ProjectTimeline client:load />
+    </section>
+
+    <!-- ==================== HOW TO JOIN ==================== -->
+    <section id="join" class="relative z-10 py-24 md:py-32 px-6 md:px-16">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-6">For Students</p>
+            <h2 class="text-[#F5F0EB] font-light tracking-[-0.03em] mb-4" style="font-size: clamp(2rem, 4vw, 3.5rem)">
+                Join Lambert iGEM
+            </h2>
+            <p class="text-[#B8A99A] font-light max-w-xl leading-relaxed text-base md:text-lg mb-20">
+                No prior experience in biology is required — just curiosity, dedication, and a willingness to learn.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-16 md:gap-20">
+                <div>
+                    <span class="text-[#C92C2A] font-light tracking-[-0.04em] block mb-4" style="font-size: clamp(2.5rem, 4vw, 4rem)">01</span>
+                    <h3 class="text-[#F5F0EB] font-light text-lg tracking-[-0.02em] mb-4">Learn Real Science</h3>
+                    <p class="text-[#7A6E63] text-sm font-light leading-[1.8]">
+                        Work with PCR machines, gel electrophoresis, gene cloning, and computational modeling tools used in professional biotech labs.
+                    </p>
+                </div>
+                <div>
+                    <span class="text-[#C92C2A] font-light tracking-[-0.04em] block mb-4" style="font-size: clamp(2.5rem, 4vw, 4rem)">02</span>
+                    <h3 class="text-[#F5F0EB] font-light text-lg tracking-[-0.02em] mb-4">Build Your Portfolio</h3>
+                    <p class="text-[#7A6E63] text-sm font-light leading-[1.8]">
+                        Present research at an international competition, contribute to a team wiki, and develop communication skills valued by top universities.
+                    </p>
+                </div>
+                <div>
+                    <span class="text-[#C92C2A] font-light tracking-[-0.04em] block mb-4" style="font-size: clamp(2.5rem, 4vw, 4rem)">03</span>
+                    <h3 class="text-[#F5F0EB] font-light text-lg tracking-[-0.02em] mb-4">Join a Community</h3>
+                    <p class="text-[#7A6E63] text-sm font-light leading-[1.8]">
+                        Be part of a global network of 70,000+ iGEM alumni working in biotech, medicine, and research around the world.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <a href="/contact" class="btn-morph inline-block px-10 py-4 text-[15px] font-medium text-[#0D0608] bg-[#D4A853] hover:bg-[#E0BB6E] transition-all duration-500">
+                    Apply to Join
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</BaseLayout>
+
+<script>
+    import { gsap } from "gsap";
+
+    // Hero wipe animation only
+    const heroTl = gsap.timeline({ delay: 0.5 });
+
+    heroTl.to("#hero-title", {
+        clipPath: "inset(0 0% 0 0)",
+        duration: 1.4,
+        ease: "power4.inOut",
+    });
+
+    heroTl.to("#hero-line", {
+        width: "200px",
+        duration: 0.8,
+        ease: "power3.out",
+    }, "-=0.4");
+
+    heroTl.to("#hero-sub", {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+    }, "-=0.3");
+</script>

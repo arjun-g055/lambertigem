@@ -1,0 +1,603 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/navbar";
+import Footer from "../components/Footer.tsx";
+---
+
+<BaseLayout title="News - Lambert iGEM">
+  <Navbar client:load />
+
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION — Massive "NEWS" typography
+  ═══════════════════════════════════════════ -->
+  <section class="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 md:pb-28" id="hero">
+    <!-- Ambient glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-[#C92C2A]/[0.03] blur-[180px] pointer-events-none"></div>
+
+    <!-- Overline -->
+    <p id="hero-overline" class="text-[#D4A853] text-xs font-light uppercase tracking-[0.4em] mb-8 opacity-0">
+      Latest Updates
+    </p>
+
+    <!-- Title -->
+    <div class="overflow-hidden">
+      <h1
+        id="hero-title"
+        class="text-[#F5F0EB] text-[clamp(5rem,18vw,14rem)] font-light leading-[0.85] tracking-[-0.04em]"
+        style="clip-path: inset(100% 0 0 0);"
+      >
+        NEWS
+      </h1>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div id="scroll-indicator" class="absolute bottom-8 flex flex-col items-center gap-3 opacity-0">
+      <span class="text-[#7A6E63] text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-[#7A6E63] to-transparent scroll-line-anim"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       TICKER TAPE — infinite horizontal scroll
+  ═══════════════════════════════════════════ -->
+  <div id="ticker-section" class="relative overflow-hidden border-y border-[#F5F0EB]/[0.06] py-5">
+    <div class="ticker-track flex whitespace-nowrap will-change-transform">
+      <!-- Duplicated for seamless loop -->
+      <span class="ticker-item">Featured on CBS 60 Minutes</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">iGEM 2025 Grand Jamboree in Paris</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">Gold Medal at iGEM 2024</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">Partnership with Georgia Tech</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">500+ Students Reached Through STEM Outreach</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- repeat -->
+      <span class="ticker-item">Featured on CBS 60 Minutes</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">iGEM 2025 Grand Jamboree in Paris</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">Gold Medal at iGEM 2024</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">Partnership with Georgia Tech</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">500+ Students Reached Through STEM Outreach</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- third copy for longer screens -->
+      <span class="ticker-item">Featured on CBS 60 Minutes</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">iGEM 2025 Grand Jamboree in Paris</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">Gold Medal at iGEM 2024</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">Partnership with Georgia Tech</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-item">500+ Students Reached Through STEM Outreach</span>
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       EDITORIAL ARTICLES
+  ═══════════════════════════════════════════ -->
+  <section id="articles" class="relative max-w-6xl mx-auto px-6 md:px-12 pt-8 md:pt-12">
+
+    <!-- Article 1 — Featured on 60 Minutes (with image) -->
+    <article class="news-article py-24 md:py-32 border-b border-[#F5F0EB]/[0.04]" data-article>
+      <div class="article-wipe">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Media</span>
+          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">November 2025</span>
+        </div>
+
+        <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 4rem);">
+          Featured on<br />
+          <span class="text-gradient-red">CBS 60 Minutes</span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <!-- Styled visual -->
+          <div class="lg:col-span-7 overflow-hidden">
+            <div class="article-image w-full aspect-[16/9] relative bg-gradient-to-br from-[#1a1012] to-[#0D0608] border border-[#F5F0EB]/[0.06] flex items-center justify-center">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(201,44,42,0.08),transparent_60%)]"></div>
+              <div class="relative text-center">
+                <span class="text-[#C92C2A] text-[11px] font-light uppercase tracking-[0.4em] block mb-3">CBS</span>
+                <span class="text-[#F5F0EB]/80 font-light tracking-[-0.04em]" style="font-size: clamp(2rem, 4vw, 3.5rem);">60 Minutes</span>
+                <div class="h-px w-16 bg-[#C92C2A]/40 mx-auto mt-4"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="lg:col-span-5">
+            <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
+              CBS 60 Minutes aired a segment highlighting Lambert iGEM's groundbreaking Lyme disease research. The nationally televised feature showcased how high school students are pushing the boundaries of synthetic biology to develop innovative diagnostic tools.
+            </p>
+            <p class="text-[#7A6E63] font-light leading-relaxed text-sm">
+              The segment brought unprecedented visibility to the team's work, inspiring a new wave of interest in synthetic biology education at the high school level across the country.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- Article 2 — iGEM 2025 Grand Jamboree -->
+    <article class="news-article py-24 md:py-32 border-b border-[#F5F0EB]/[0.04]" data-article>
+      <div class="article-wipe">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Competition</span>
+          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">October 2025</span>
+        </div>
+
+        <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 4rem);">
+          iGEM 2025<br />
+          <span class="text-gradient-red">Grand Jamboree</span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-7">
+            <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
+              Team Lancet competed at the 2025 iGEM Grand Jamboree in Paris, France, presenting their innovative research on the world's biggest stage for synthetic biology.
+            </p>
+            <p class="text-[#7A6E63] font-light leading-relaxed text-sm">
+              As one of the few high school teams at a competition with 400+ teams from 40+ countries, Lambert iGEM once again proved that high school students can produce world-class research.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#1a1012] to-[#0D0608] border border-[#F5F0EB]/[0.06] flex items-center justify-center rounded-sm">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,44,42,0.06),transparent_70%)]"></div>
+              <div class="relative text-center">
+                <span class="text-[#F5F0EB]/[0.06] font-light select-none" style="font-size: clamp(5rem, 10vw, 8rem);">25</span>
+                <span class="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#C92C2A] text-[10px] font-light uppercase tracking-[0.3em]">Paris</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- Article 3 — Gold Medal at iGEM 2024 -->
+    <article class="news-article py-24 md:py-32 border-b border-[#F5F0EB]/[0.04]" data-article>
+      <div class="article-wipe">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Achievement</span>
+          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">2024</span>
+        </div>
+
+        <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 4rem);">
+          Gold Medal at<br />
+          <span class="text-[#D4A853]">iGEM 2024</span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#1a1210] to-[#0D0608] border border-[#D4A853]/[0.1] flex items-center justify-center rounded-sm">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,83,0.06),transparent_70%)]"></div>
+              <svg class="relative" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="36" r="24" stroke="#D4A853" stroke-width="1.5" fill="none" opacity="0.4"/>
+                <circle cx="40" cy="36" r="16" stroke="#D4A853" stroke-width="0.5" fill="none" opacity="0.2"/>
+                <path d="M30 60L40 70L50 60" stroke="#D4A853" stroke-width="1" fill="none" opacity="0.3"/>
+                <path d="M33 60L40 65L47 60" stroke="#D4A853" stroke-width="0.5" fill="none" opacity="0.2"/>
+                <text x="40" y="40" text-anchor="middle" fill="#D4A853" font-size="12" font-weight="300" opacity="0.6">GOLD</text>
+              </svg>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
+              Lambert iGEM earned a prestigious Gold Medal at the 2024 Grand Jamboree for Project Shield. The team's innovative bioengineered solutions impressed judges, demonstrating exceptional scientific rigor and real-world impact.
+            </p>
+            <p class="text-[#7A6E63] font-light leading-relaxed text-sm">
+              Project Shield represented a breakthrough in the team's approach to synthetic biology problem-solving, combining advanced genetic circuit design with practical applications that addressed genuine community needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- Article 4 — Partnership with Georgia Tech -->
+    <article class="news-article py-24 md:py-32 border-b border-[#F5F0EB]/[0.04]" data-article>
+      <div class="article-wipe">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Partnerships</span>
+          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">2024</span>
+        </div>
+
+        <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 4rem);">
+          Partnership with<br />
+          <span class="text-gradient-red">Georgia Tech</span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-7">
+            <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
+              A landmark collaboration with Georgia Tech laboratories provides Lambert iGEM with access to advanced research equipment and faculty mentorship, marking a new chapter in scientific excellence.
+            </p>
+            <p class="text-[#7A6E63] font-light leading-relaxed text-sm">
+              This partnership bridges the gap between high school and professional research, giving students hands-on experience with cutting-edge tools and techniques. Faculty advisors from Georgia Tech provide ongoing guidance on experimental design and analysis.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#0e1214] to-[#0D0608] border border-[#F5F0EB]/[0.06] flex items-center justify-center rounded-sm">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,44,42,0.04),transparent_70%)]"></div>
+              <div class="relative text-center">
+                <span class="text-[#F5F0EB]/[0.06] font-light select-none" style="font-size: clamp(3rem, 6vw, 5rem);">GT</span>
+                <div class="h-px w-12 bg-[#C92C2A]/30 mx-auto mt-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- Article 5 — Community Outreach Milestone -->
+    <article class="news-article py-24 md:py-32" data-article>
+      <div class="article-wipe">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Outreach</span>
+          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">Ongoing</span>
+        </div>
+
+        <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 4rem);">
+          Community Outreach<br />
+          <span class="text-gradient-red">Milestone</span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#1a1210] to-[#0D0608] border border-[#D4A853]/[0.1] flex items-center justify-center rounded-sm">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,83,0.06),transparent_70%)]"></div>
+              <div class="relative text-center">
+                <span class="text-[#D4A853] font-light leading-none" style="font-size: clamp(3rem, 6vw, 4.5rem);">500+</span>
+                <span class="block text-[#7A6E63] text-[10px] font-light uppercase tracking-[0.3em] mt-2">Students Reached</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
+              Through educational workshops, synthetic biology camps, and community science events, Lambert iGEM has reached over 500 students across Georgia, inspiring the next generation of scientists.
+            </p>
+            <p class="text-[#7A6E63] font-light leading-relaxed text-sm">
+              From hands-on DNA extraction demos to interactive presentations on genetic engineering, the team's outreach programs have become a cornerstone of their mission to democratize science education.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       BOTTOM MARQUEE — subtle infinite scroll
+  ═══════════════════════════════════════════ -->
+  <div id="bottom-marquee" class="relative overflow-hidden py-16 mt-8 md:mt-12">
+    <div class="marquee-track flex whitespace-nowrap will-change-transform">
+      <span class="marquee-text">NEWS</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">UPDATES</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">LAMBERT iGEM</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">SYNTHETIC BIOLOGY</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">NEWS</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">UPDATES</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">LAMBERT iGEM</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">SYNTHETIC BIOLOGY</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">NEWS</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">UPDATES</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">LAMBERT iGEM</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">SYNTHETIC BIOLOGY</span>
+      <span class="marquee-dot"></span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       CTA SECTION — Stay Updated
+  ═══════════════════════════════════════════ -->
+  <section id="cta-section" class="relative min-h-[60vh] flex flex-col items-center justify-center px-6 py-24 md:py-32 overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C92C2A]/[0.03] blur-[120px] pointer-events-none"></div>
+
+    <div id="cta-content" class="relative text-center max-w-2xl">
+      <p class="text-[#D4A853] text-xs font-light uppercase tracking-[0.4em] mb-8 cta-item">Newsletter</p>
+
+      <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-6 cta-item" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
+        Stay<br />
+        <span class="text-gradient-red">Updated</span>
+      </h2>
+
+      <p class="text-[#7A6E63] text-lg md:text-xl font-light mb-14 max-w-md mx-auto leading-relaxed cta-item">
+        Follow our journey in synthetic biology. Get the latest news, breakthroughs, and competition results.
+      </p>
+
+      <!-- Button -->
+      <div class="cta-item">
+        <a
+          id="magnetic-btn"
+          href="/contact"
+          class="magnetic-button relative inline-flex items-center gap-3 bg-[#D4A853] text-[#0D0608] font-light text-sm uppercase tracking-[0.15em] px-10 py-5 rounded-full overflow-hidden transition-shadow duration-500 hover:shadow-[0_0_60px_rgba(212,168,83,0.3)]"
+        >
+          <span class="relative z-10">Get in Touch</span>
+          <svg class="relative z-10 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+          <div class="absolute inset-0 bg-white/10 scale-0 rounded-full transition-transform duration-500 origin-center magnetic-btn-fill"></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom mark -->
+    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-4">
+      <div class="w-12 h-px bg-[#F5F0EB]/[0.06]"></div>
+      <span class="text-[#7A6E63] text-[10px] font-light uppercase tracking-[0.3em]">Lambert iGEM</span>
+      <div class="w-12 h-px bg-[#F5F0EB]/[0.06]"></div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+
+<style>
+  /* Page background */
+  :global(body) {
+    background-color: #0D0608;
+  }
+
+  /* ── Scroll line animation ── */
+  .scroll-line-anim {
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  }
+
+  /* ── Ticker tape ── */
+  .ticker-track {
+    animation: tickerScroll 40s linear infinite;
+  }
+
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.333%); }
+  }
+
+  .ticker-item {
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #B8A99A;
+    padding: 0 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .ticker-sep {
+    color: #C92C2A;
+    opacity: 0.5;
+    font-size: 0.6rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── Article wipe reveal ── */
+  .article-wipe {
+    clip-path: inset(0 100% 0 0);
+    will-change: clip-path;
+  }
+
+  /* ── Article image ── */
+  .article-image {
+    filter: grayscale(20%) contrast(1.05);
+    transition: filter 0.8s ease, transform 0.8s ease;
+  }
+
+  .news-article:hover .article-image {
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.02);
+  }
+
+  /* ── Bottom marquee ── */
+  .marquee-track {
+    animation: marqueeScroll 25s linear infinite;
+  }
+
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.333%); }
+  }
+
+  .marquee-text {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    color: rgba(245, 240, 235, 0.04);
+    padding: 0 2rem;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .marquee-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(201, 44, 42, 0.15);
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  /* ── Magnetic button ── */
+  .magnetic-button:hover .magnetic-btn-fill {
+    transform: scale(2.5);
+  }
+</style>
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ─── Lenis smooth scroll ───────────────────────────
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time: number) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+
+
+  // ─── Hero animations ──────────────────────────────
+  const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+  heroTl
+    .to("#hero-title", {
+      clipPath: "inset(0% 0 0 0)",
+      duration: 1.4,
+      delay: 0.3,
+    })
+    .to("#hero-overline", {
+      opacity: 1,
+      duration: 0.8,
+    }, "-=0.9")
+    .to("#scroll-indicator", {
+      opacity: 1,
+      duration: 0.8,
+    }, "-=0.4");
+
+  // Hero parallax on scroll
+  gsap.to("#hero-title", {
+    yPercent: -40,
+    opacity: 0.2,
+    scrollTrigger: {
+      trigger: "#hero",
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.5,
+    },
+  });
+
+
+  // ─── Ticker: pause on hover ────────────────────────
+  const tickerTrack = document.querySelector(".ticker-track") as HTMLElement;
+  if (tickerTrack) {
+    const tickerSection = document.getElementById("ticker-section");
+    tickerSection?.addEventListener("mouseenter", () => {
+      tickerTrack.style.animationPlayState = "paused";
+    });
+    tickerSection?.addEventListener("mouseleave", () => {
+      tickerTrack.style.animationPlayState = "running";
+    });
+  }
+
+
+  // ─── Article wipe-from-left reveals ────────────────
+  const articles = document.querySelectorAll("[data-article]");
+
+  articles.forEach((article) => {
+    const wipe = article.querySelector(".article-wipe") as HTMLElement;
+
+    if (wipe) {
+      gsap.to(wipe, {
+        clipPath: "inset(0 0% 0 0)",
+        duration: 1.2,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: article,
+          start: "top 75%",
+          end: "top 35%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+  });
+
+
+  // ─── CTA section animations ───────────────────────
+  const ctaItems = document.querySelectorAll(".cta-item");
+
+  gsap.fromTo(ctaItems, {
+    y: 50,
+    opacity: 0,
+  }, {
+    y: 0,
+    opacity: 1,
+    stagger: 0.12,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "#cta-section",
+      start: "top 70%",
+      end: "top 30%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+
+  // ─── Magnetic button effect ───────────────────────
+  const magneticBtn = document.getElementById("magnetic-btn");
+
+  if (magneticBtn) {
+    const btnRect = () => magneticBtn.getBoundingClientRect();
+    const strength = 0.35;
+
+    magneticBtn.addEventListener("mousemove", (e) => {
+      const rect = btnRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      gsap.to(magneticBtn, {
+        x: x * strength,
+        y: y * strength,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    });
+
+    magneticBtn.addEventListener("mouseleave", () => {
+      gsap.to(magneticBtn, {
+        x: 0,
+        y: 0,
+        duration: 0.7,
+        ease: "elastic.out(1, 0.3)",
+      });
+    });
+  }
+
+
+  // ─── Refresh on resize ────────────────────────────
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+  });
+</script>

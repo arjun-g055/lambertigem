@@ -1,15 +1,18 @@
 ---
-const { title = "Lambert iGEM" } = Astro.props;
+const { title = "Lambert iGEM", description = "Lambert iGEM is a nationally recognized synthetic biology research team from Lambert High School in Suwanee, Georgia, competing in the iGEM competition since 2013. Discover our research projects, meet our team, and learn how to support the next generation of scientists." } = Astro.props;
 import "../styles/global.css";
-import  SpeedInsights  from "@vercel/speed-insights/astro";
-import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0D0608" />
 
     <title>{title}</title>
 
@@ -18,10 +21,149 @@ import Analytics from '@vercel/analytics/astro';
       rel="icon"
       href="https://gbditp38bksey5gu.public.blob.vercel-storage.com/igem-favicon.png"
     />
+
+    <!-- Preconnect to external image host -->
+    <link
+      rel="preconnect"
+      href="https://gbditp38bksey5gu.public.blob.vercel-storage.com"
+    />
+
+    <!-- Google Fonts: Inter + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Lambert iGEM",
+      "description": "A synthetic biology research team from Lambert High School competing in the International Genetically Engineered Machine (iGEM) competition since 2013.",
+      "url": "https://lambertigem.org",
+      "logo": "https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png",
+      "foundingDate": "2013",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Suwanee",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      },
+      "parentOrganization": {
+        "@type": "HighSchool",
+        "name": "Lambert High School"
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "iGEM Foundation",
+        "url": "https://igem.org"
+      }
+    })} />
+
+    <!-- Astro View Transitions (SPA-like smooth navigation) -->
+    <ClientRouter />
   </head>
-  <body>
-    <slot />
+  <body class="antialiased" transition:animate="fade">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10001] focus:bg-[#D4A853] focus:text-[#0D0608] focus:px-4 focus:py-2 focus:rounded-lg focus:font-medium focus:text-sm">
+      Skip to content
+    </a>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <img
+        src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png"
+        alt="Loading..."
+        class="h-12 w-auto opacity-80"
+      />
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <main id="main-content">
+      <slot />
+    </main>
     <SpeedInsights />
     <Analytics />
+
+    <!-- Preloader + Cursor initialization -->
+    <script>
+      // Use astro:page-load so preloader + cursor re-initialize on every
+      // client-side navigation (View Transitions / ClientRouter).
+      document.addEventListener("astro:page-load", () => {
+        // ── Preloader ──
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          setTimeout(() => {
+            preloader.classList.add("done");
+            setTimeout(() => preloader.remove(), 600);
+          }, 1400);
+        }
+
+        // ── Custom Cursor ──
+        const dot = document.getElementById("cursor-dot");
+        const ring = document.getElementById("cursor-ring");
+
+        if (dot && ring && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          let mouseX = 0, mouseY = 0;
+          let ringX = 0, ringY = 0;
+
+          document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + "px";
+            dot.style.top = mouseY + "px";
+          });
+
+          function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            ring.style.left = ringX + "px";
+            ring.style.top = ringY + "px";
+            requestAnimationFrame(animateRing);
+          }
+          animateRing();
+
+          // Hover expansion on interactive elements
+          const hoverTargets = "a, button, input, textarea, [role='button']";
+          document.addEventListener("mouseover", (e) => {
+            if ((e.target as Element).closest(hoverTargets)) {
+              dot.classList.add("hover");
+              ring.classList.add("hover");
+            }
+          });
+          document.addEventListener("mouseout", (e) => {
+            if ((e.target as Element).closest(hoverTargets)) {
+              dot.classList.remove("hover");
+              ring.classList.remove("hover");
+            }
+          });
+
+          // Hide default cursor
+          document.documentElement.style.cursor = "none";
+          const style = document.createElement("style");
+          style.textContent = "a,button,input,textarea,[role='button']{cursor:none!important}";
+          document.head.appendChild(style);
+        } else {
+          // Remove cursor elements on touch devices
+          dot?.remove();
+          ring?.remove();
+        }
+
+        // Focus-visible styles
+        const focusStyle = document.createElement("style");
+        focusStyle.textContent = "*:focus-visible{outline:2px solid #D4A853;outline-offset:2px;border-radius:4px}";
+        document.head.appendChild(focusStyle);
+      });
+    </script>
   </body>
 </html>

@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/navbar";
 import Landing from "../components/Landing.tsx";
+import Footer from "../components/Footer.tsx";
 ---
 
-<BaseLayout title="Lambert iGEM">
-  <Landing />
+<BaseLayout title="Lambert iGEM — Synthetic Biology Research & Innovation | Since 2013">
+  <Navbar client:load />
+  <Landing client:load />
+  <Footer />
 </BaseLayout>

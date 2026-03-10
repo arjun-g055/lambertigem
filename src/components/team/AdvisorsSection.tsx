@@ -1,4 +1,5 @@
 import React from "react";
+import TiltCard from "./TiltCard";
 
 export type Advisor = {
     name: string;
@@ -11,14 +12,14 @@ export type Advisor = {
 export default function AdvisorsSection({ advisors }: { advisors: Advisor[] }) {
     return (
         <section className="max-w-5xl mx-auto px-6 py-12">
-            <h2 className="text-3xl font-bold text-center mb-10 [text-shadow:0_0_0.4em_#FFFFFF]">
+            <h2 className="text-3xl font-light tracking-[-0.03em] text-[#F5F0EB] text-center mb-10 [text-shadow:0_0_0.4em_#FFFFFF]">
                 Advisors
             </h2>
             <div className="flex flex-wrap justify-center gap-10 sm:gap-16">
                 {advisors.map((advisor) => (
-                    <div
+                    <TiltCard
                         key={advisor.name}
-                        className="flex flex-col items-center text-center w-32 sm:w-36"
+                        className="flex flex-col items-center text-center w-32 sm:w-36 p-4"
                     >
                         <div
                             className="
@@ -36,7 +37,7 @@ export default function AdvisorsSection({ advisors }: { advisors: Advisor[] }) {
                                 />
                             ) : advisor.initial ? (
                                 <div
-                                    className="w-full h-full flex items-center justify-center text-3xl font-bold text-white"
+                                    className="w-full h-full flex items-center justify-center text-3xl font-bold text-[#F5F0EB]"
                                     style={{ backgroundColor: advisor.color ?? "#6366f1" }}
                                 >
                                     {advisor.initial}
@@ -49,13 +50,13 @@ export default function AdvisorsSection({ advisors }: { advisors: Advisor[] }) {
                                 </div>
                             )}
                         </div>
-                        <h3 className="text-white font-semibold text-sm sm:text-base leading-tight">
+                        <h3 className="text-[#F5F0EB] font-medium text-sm sm:text-base leading-tight">
                             {advisor.name}
                         </h3>
-                        <p className="text-gray-500 text-xs sm:text-sm mt-0.5">
+                        <p className="text-[#B8A99A] font-light tracking-wide text-xs sm:text-sm mt-0.5">
                             {advisor.description}
                         </p>
-                    </div>
+                    </TiltCard>
                 ))}
             </div>
         </section>
