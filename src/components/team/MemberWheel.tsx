@@ -89,11 +89,11 @@ const GEAR_STYLE = `@keyframes gear-spin{from{transform:rotate(0deg)}to{transfor
 export default function MemberWheel({ members }: { members: Member[] }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const wheelSize = 480;
+    const wheelSize = 560;
     const center = wheelSize / 2;
-    const orbitRadius = 185;
-    const centerSize = 130;
-    const orbitSize = 52;
+    const orbitRadius = 215;
+    const centerSize = 140;
+    const orbitSize = 58;
 
     // Build orbit: everyone except selected member
     const orbitMembers = members.filter((_, i) => i !== selectedIndex);
@@ -116,7 +116,7 @@ export default function MemberWheel({ members }: { members: Member[] }) {
         };
     });
 
-    const gearSize = wheelSize * 1.08;
+    const gearSize = wheelSize * 1.25;
 
     return (
         <section className="max-w-6xl mx-auto px-6 py-8">

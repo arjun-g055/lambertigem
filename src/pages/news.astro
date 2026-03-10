@@ -99,19 +99,15 @@ import Footer from "../components/Footer.tsx";
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <!-- Styled visual -->
-          <div class="lg:col-span-7 overflow-hidden">
-            <div class="article-image w-full aspect-[16/9] relative bg-gradient-to-br from-[#1a1012] to-[#0D0608] border border-[#F5F0EB]/[0.06] flex items-center justify-center">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(201,44,42,0.08),transparent_60%)]"></div>
-              <div class="relative text-center">
-                <span class="text-[#C92C2A] text-[11px] font-light uppercase tracking-[0.4em] block mb-3">CBS</span>
-                <span class="text-[#F5F0EB]/80 font-light tracking-[-0.04em]" style="font-size: clamp(2rem, 4vw, 3.5rem);">60 Minutes</span>
-                <div class="h-px w-16 bg-[#C92C2A]/40 mx-auto mt-4"></div>
-              </div>
-            </div>
+          <div class="lg:col-span-7 overflow-hidden rounded-sm">
+            <img
+              src="https://static.igem.wiki/teams/5612/teampage/teampageheader.webp"
+              alt="Lambert iGEM team photo"
+              class="article-image w-full aspect-[16/9] object-cover"
+              loading="lazy"
+            />
           </div>
 
-          <!-- Text -->
           <div class="lg:col-span-5">
             <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
               CBS 60 Minutes aired a segment highlighting Lambert iGEM's groundbreaking Lyme disease research. The nationally televised feature showcased how high school students are pushing the boundaries of synthetic biology to develop innovative diagnostic tools.
@@ -147,14 +143,13 @@ import Footer from "../components/Footer.tsx";
               As one of the few high school teams at a competition with 400+ teams from 40+ countries, Lambert iGEM once again proved that high school students can produce world-class research.
             </p>
           </div>
-          <div class="lg:col-span-5 flex items-center justify-center">
-            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#1a1012] to-[#0D0608] border border-[#F5F0EB]/[0.06] flex items-center justify-center rounded-sm">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,44,42,0.06),transparent_70%)]"></div>
-              <div class="relative text-center">
-                <span class="text-[#F5F0EB]/[0.06] font-light select-none" style="font-size: clamp(5rem, 10vw, 8rem);">25</span>
-                <span class="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#C92C2A] text-[10px] font-light uppercase tracking-[0.3em]">Paris</span>
-              </div>
-            </div>
+          <div class="lg:col-span-5 overflow-hidden rounded-sm">
+            <img
+              src="https://static.igem.wiki/teams/5612/hardware/img-8048.webp"
+              alt="Lambert iGEM hardware prototype"
+              class="article-image w-full aspect-square object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -175,17 +170,13 @@ import Footer from "../components/Footer.tsx";
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div class="lg:col-span-5 flex items-center justify-center">
-            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#1a1210] to-[#0D0608] border border-[#D4A853]/[0.1] flex items-center justify-center rounded-sm">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,83,0.06),transparent_70%)]"></div>
-              <svg class="relative" width="80" height="80" viewBox="0 0 80 80" fill="none">
-                <circle cx="40" cy="36" r="24" stroke="#D4A853" stroke-width="1.5" fill="none" opacity="0.4"/>
-                <circle cx="40" cy="36" r="16" stroke="#D4A853" stroke-width="0.5" fill="none" opacity="0.2"/>
-                <path d="M30 60L40 70L50 60" stroke="#D4A853" stroke-width="1" fill="none" opacity="0.3"/>
-                <path d="M33 60L40 65L47 60" stroke="#D4A853" stroke-width="0.5" fill="none" opacity="0.2"/>
-                <text x="40" y="40" text-anchor="middle" fill="#D4A853" font-size="12" font-weight="300" opacity="0.6">GOLD</text>
-              </svg>
-            </div>
+          <div class="lg:col-span-5 overflow-hidden rounded-sm">
+            <img
+              src="https://static.igem.wiki/teams/5612/cas12a/casper-cas12.webp"
+              alt="CASPER Cas12a diagnostic results"
+              class="article-image w-full aspect-square object-cover"
+              loading="lazy"
+            />
           </div>
           <div class="lg:col-span-7">
             <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
@@ -200,36 +191,35 @@ import Footer from "../components/Footer.tsx";
     </article>
 
 
-    <!-- Article 4 — Partnership with Georgia Tech -->
+    <!-- Article 4 — Origins: Bhamla Lab & Standeven -->
     <article class="news-article py-24 md:py-32 border-b border-[#F5F0EB]/[0.04]" data-article>
       <div class="article-wipe">
         <div class="flex items-center gap-4 mb-8">
-          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Partnerships</span>
-          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">2024</span>
+          <span class="text-[#D4A853] text-[11px] font-light uppercase tracking-[0.25em]">Origins</span>
+          <span class="text-[#7A6E63] text-[11px] font-light uppercase tracking-[0.15em]">2019</span>
         </div>
 
         <h2 class="text-[#F5F0EB] font-light leading-[1.05] tracking-[-0.03em] mb-8" style="font-size: clamp(2rem, 5vw, 4rem);">
-          Partnership with<br />
-          <span class="text-gradient-red">Georgia Tech</span>
+          How It All<br />
+          <span class="text-gradient-red">Started</span>
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div class="lg:col-span-7">
             <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">
-              A landmark collaboration with Georgia Tech laboratories provides Lambert iGEM with access to advanced research equipment and faculty mentorship, marking a new chapter in scientific excellence.
+              Lambert iGEM was founded through the vision of the <span class="text-[#F5F0EB]">Bhamla Lab</span> at Georgia Tech and <span class="text-[#F5F0EB]">Mark Standeven</span>, who saw the potential for high school students to participate in world-class synthetic biology research. Their combined support launched one of the few American high school iGEM teams.
             </p>
             <p class="text-[#7A6E63] font-light leading-relaxed text-sm">
-              This partnership bridges the gap between high school and professional research, giving students hands-on experience with cutting-edge tools and techniques. Faculty advisors from Georgia Tech provide ongoing guidance on experimental design and analysis.
+              Dr. Saad Bhamla's lab at Georgia Tech provided the scientific foundation, mentorship, and lab access that made it possible for high schoolers to compete alongside university teams from around the world. Mark Standeven championed the program within the school system, securing the institutional support needed to make it a reality.
             </p>
           </div>
-          <div class="lg:col-span-5 flex items-center justify-center">
-            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#0e1214] to-[#0D0608] border border-[#F5F0EB]/[0.06] flex items-center justify-center rounded-sm">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,44,42,0.04),transparent_70%)]"></div>
-              <div class="relative text-center">
-                <span class="text-[#F5F0EB]/[0.06] font-light select-none" style="font-size: clamp(3rem, 6vw, 5rem);">GT</span>
-                <div class="h-px w-12 bg-[#C92C2A]/30 mx-auto mt-2"></div>
-              </div>
-            </div>
+          <div class="lg:col-span-5 overflow-hidden rounded-sm">
+            <img
+              src="https://static.igem.wiki/teams/5612/engineeringsuccess/pdl/img-4810.webp"
+              alt="Lambert iGEM lab work"
+              class="article-image w-full aspect-square object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -250,14 +240,13 @@ import Footer from "../components/Footer.tsx";
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div class="lg:col-span-5 flex items-center justify-center">
-            <div class="article-image aspect-square w-full max-w-[240px] relative bg-gradient-to-br from-[#1a1210] to-[#0D0608] border border-[#D4A853]/[0.1] flex items-center justify-center rounded-sm">
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,83,0.06),transparent_70%)]"></div>
-              <div class="relative text-center">
-                <span class="text-[#D4A853] font-light leading-none" style="font-size: clamp(3rem, 6vw, 4.5rem);">500+</span>
-                <span class="block text-[#7A6E63] text-[10px] font-light uppercase tracking-[0.3em] mt-2">Students Reached</span>
-              </div>
-            </div>
+          <div class="lg:col-span-5 overflow-hidden rounded-sm">
+            <img
+              src="https://static.igem.wiki/teams/5612/education/outreachnight1.webp"
+              alt="Lambert iGEM outreach night with students"
+              class="article-image w-full aspect-square object-cover"
+              loading="lazy"
+            />
           </div>
           <div class="lg:col-span-7">
             <p class="text-[#B8A99A] font-light leading-relaxed text-base md:text-lg mb-6">

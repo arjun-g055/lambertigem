@@ -24,12 +24,6 @@ const MEMBERS: Member[] = [
         image: "https://static.igem.wiki/teams/5612/teampage/members/shashwat-hs.webp",
     },
     {
-        name: "Julia Rho",
-        role: "Human Practices Lead",
-        bio: "Second-time iGEMmer leading Human Practices. Passionate about connecting science with community impact.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/julia-hs.webp",
-    },
-    {
         name: "Jiwoo Han",
         role: "Member",
         bio: "Junior, first year on iGEM. Helps with wetlab and graphics. Collects playing cards and reads sci-fi.",
@@ -46,12 +40,6 @@ const MEMBERS: Member[] = [
         role: "Member",
         bio: "First year on the team. Enjoys reading and spending time with friends.",
         image: "https://static.igem.wiki/teams/5612/teampage/members/keerthana-hs.webp",
-    },
-    {
-        name: "Nishchai Chawla",
-        role: "Member",
-        bio: "First year on the team. Interested in graphics, AI, and biotech applications. Codes and builds software.",
-        image: "https://static.igem.wiki/teams/5612/teampage/members/nish-hs.webp",
     },
     {
         name: "Rohan Kaushik",
@@ -74,8 +62,8 @@ const MEMBERS: Member[] = [
 ];
 
 const ADVISORS: Advisor[] = [
-    { name: "Kate Sharer", description: "Team Advisor", image: "" },
-    { name: "Catherine O'Haver", description: "Team Advisor", image: "" },
+    { name: "Kate Sharer", description: "Team Advisor", image: "https://static.igem.wiki/teams/5612/teampage/members/sharer-hs.webp" },
+    { name: "Catherine O'Haver", description: "Team Advisor", image: "https://static.igem.wiki/teams/5612/teampage/members/ohaver-hs.webp" },
 ];
 
 // ── Section config ──────────────────────────────────────────────────────
