@@ -54,7 +54,7 @@ import Footer from "../components/Footer.tsx";
 
               <div class="info-item">
                 <p class="text-[#7A6E63] text-xs font-light tracking-[0.25em] uppercase mb-2">Email</p>
-                <a href="mailto:lambertigem@gmail.com" class="text-[#F5F0EB] font-light text-base md:text-lg hover:text-[#D4A853] transition-colors duration-300">lambertigem@gmail.com</a>
+                <a href="mailto:igem.lamb@gmail.com" class="text-[#F5F0EB] font-light text-base md:text-lg hover:text-[#D4A853] transition-colors duration-300 underline underline-offset-4 decoration-[#F5F0EB]/30">igem.lamb@gmail.com</a>
               </div>
             </div>
           </div>
@@ -78,29 +78,10 @@ import Footer from "../components/Footer.tsx";
     z-index: 10;
   }
 
-  /* Hero characters start hidden */
-  .hero-char {
-    opacity: 0;
-    transform: translateY(100%) rotateX(90deg);
-    transform-origin: bottom center;
-  }
-
   /* Magnetic letters base style */
   .mag-letter {
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform;
-  }
-
-  /* Info items start offscreen left */
-  .info-item {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-
-  /* Contact right (form) starts hidden */
-  .contact-right {
-    opacity: 0;
-    transform: translateX(80px);
   }
 </style>
 
@@ -111,128 +92,148 @@ import Footer from "../components/Footer.tsx";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // =============================================
-  // SMOOTH SCROLL WITH LENIS
-  // =============================================
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-  });
+  function initContactPage() {
+    const page = document.querySelector("main");
+    if (!page) return () => {};
 
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add((time: number) => lenis.raf(time * 1000));
-  gsap.ticker.lagSmoothing(0);
-
-  // =============================================
-  // 1. HERO — "CONTACT" letter-by-letter reveal
-  // =============================================
-  const heroEl = document.getElementById("contact-hero");
-  if (heroEl) {
-    gsap.set(heroEl, { opacity: 1 });
-  }
-
-  const heroChars = document.querySelectorAll(".hero-char");
-
-  gsap.to(heroChars, {
-    opacity: 1,
-    y: "0%",
-    rotateX: 0,
-    duration: 1.2,
-    ease: "expo.out",
-    stagger: 0.06,
-    delay: 0.3,
-  });
-
-  // Decorative line expand
-  gsap.to("#hero-line", {
-    width: "200px",
-    duration: 1.4,
-    ease: "expo.out",
-    delay: 0.8,
-  });
-
-  // =============================================
-  // 2. LEFT COLUMN — Heading slide in
-  // =============================================
-  gsap.from(".contact-heading", {
-    x: -100,
-    opacity: 0,
-    duration: 1.2,
-    delay: 0.6,
-    ease: "elastic.out(1, 0.75)",
-  });
-
-  // =============================================
-  // 3. INFO ITEMS — Staggered elastic slide-in
-  // =============================================
-  const infoItems = document.querySelectorAll(".info-item");
-
-  gsap.to(infoItems, {
-    x: 0,
-    opacity: 1,
-    duration: 1,
-    stagger: 0.15,
-    delay: 0.9,
-    ease: "elastic.out(1, 0.8)",
-  });
-
-  // =============================================
-  // 4. FORM — Slide in from right
-  // =============================================
-  gsap.to(".contact-right", {
-    x: 0,
-    opacity: 1,
-    duration: 1.2,
-    delay: 0.7,
-    ease: "expo.out",
-  });
-
-  // =============================================
-  // 5. MAGNETIC TEXT EFFECT — Letters shift toward mouse
-  // =============================================
-  const magneticHeading = document.getElementById("magnetic-heading");
-  const magLetters = document.querySelectorAll(".mag-letter") as NodeListOf<HTMLElement>;
-
-  if (magneticHeading && magLetters.length > 0 && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    const MAGNETIC_RANGE = 200;  // px radius of influence
-    const MAGNETIC_STRENGTH = 12; // max displacement in px
-
-    const handleMouseMove = (e: MouseEvent) => {
-      magLetters.forEach((letter) => {
-        const rect = letter.getBoundingClientRect();
-        const letterCenterX = rect.left + rect.width / 2;
-        const letterCenterY = rect.top + rect.height / 2;
-
-        const deltaX = e.clientX - letterCenterX;
-        const deltaY = e.clientY - letterCenterY;
-        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        if (distance < MAGNETIC_RANGE) {
-          const force = (1 - distance / MAGNETIC_RANGE);
-          const moveX = deltaX * force * (MAGNETIC_STRENGTH / MAGNETIC_RANGE) * 2;
-          const moveY = deltaY * force * (MAGNETIC_STRENGTH / MAGNETIC_RANGE) * 2;
-          letter.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        } else {
-          letter.style.transform = "translate(0, 0)";
-        }
-      });
-    };
-
-    const handleMouseLeave = () => {
-      magLetters.forEach((letter) => {
-        letter.style.transform = "translate(0, 0)";
-      });
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    magneticHeading.addEventListener("mouseleave", handleMouseLeave);
-
-    // Reset on scroll to prevent stuck letters
-    lenis.on("scroll", () => {
-      magLetters.forEach((letter) => {
-        letter.style.transform = "translate(0, 0)";
-      });
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
     });
+
+    const ticker = (time: number) => lenis.raf(time * 1000);
+    const resetMagLetters = () => {
+      document.querySelectorAll(".mag-letter").forEach((letter) => {
+        (letter as HTMLElement).style.transform = "translate(0, 0)";
+      });
+    };
+
+    lenis.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", resetMagLetters);
+    gsap.ticker.add(ticker);
+    gsap.ticker.lagSmoothing(0);
+
+    const ctx = gsap.context(() => {
+      const heroEl = document.getElementById("contact-hero");
+      const heroChars = document.querySelectorAll(".hero-char");
+      const infoItems = document.querySelectorAll(".info-item");
+      const magneticHeading = document.getElementById("magnetic-heading");
+      const magLetters = document.querySelectorAll(".mag-letter") as NodeListOf<HTMLElement>;
+
+      if (heroEl) {
+        gsap.set(heroEl, { opacity: 1 });
+      }
+
+      gsap.set(heroChars, {
+        opacity: 0,
+        y: "100%",
+        rotateX: 90,
+        transformOrigin: "bottom center",
+      });
+
+      gsap.set(infoItems, { opacity: 0, x: -60 });
+      gsap.set(".contact-right", { opacity: 0, x: 80 });
+      gsap.set("#hero-line", { width: 0 });
+
+      gsap.to(heroChars, {
+        opacity: 1,
+        y: "0%",
+        rotateX: 0,
+        duration: 1.2,
+        ease: "expo.out",
+        stagger: 0.06,
+        delay: 0.3,
+      });
+
+      gsap.to("#hero-line", {
+        width: "200px",
+        duration: 1.4,
+        ease: "expo.out",
+        delay: 0.8,
+      });
+
+      gsap.from(".contact-heading", {
+        x: -100,
+        opacity: 0,
+        duration: 1.2,
+        delay: 0.6,
+        ease: "elastic.out(1, 0.75)",
+      });
+
+      gsap.to(infoItems, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+        delay: 0.9,
+        ease: "elastic.out(1, 0.8)",
+      });
+
+      gsap.to(".contact-right", {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        delay: 0.7,
+        ease: "expo.out",
+      });
+
+      if (magneticHeading && magLetters.length > 0 && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        const MAGNETIC_RANGE = 200;
+        const MAGNETIC_STRENGTH = 12;
+
+        const handleMouseMove = (e: MouseEvent) => {
+          magLetters.forEach((letter) => {
+            const rect = letter.getBoundingClientRect();
+            const letterCenterX = rect.left + rect.width / 2;
+            const letterCenterY = rect.top + rect.height / 2;
+
+            const deltaX = e.clientX - letterCenterX;
+            const deltaY = e.clientY - letterCenterY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            if (distance < MAGNETIC_RANGE) {
+              const force = 1 - distance / MAGNETIC_RANGE;
+              const moveX = deltaX * force * (MAGNETIC_STRENGTH / MAGNETIC_RANGE) * 2;
+              const moveY = deltaY * force * (MAGNETIC_STRENGTH / MAGNETIC_RANGE) * 2;
+              letter.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            } else {
+              letter.style.transform = "translate(0, 0)";
+            }
+          });
+        };
+
+        const handleMouseLeave = () => {
+          resetMagLetters();
+        };
+
+        document.addEventListener("mousemove", handleMouseMove);
+        magneticHeading.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+          document.removeEventListener("mousemove", handleMouseMove);
+          magneticHeading.removeEventListener("mouseleave", handleMouseLeave);
+        };
+      }
+
+      return () => {};
+    }, page);
+
+    return () => {
+      ctx.revert();
+      gsap.ticker.remove(ticker);
+      lenis.destroy();
+    };
   }
+
+  let cleanup = initContactPage();
+
+  document.addEventListener("astro:page-load", () => {
+    cleanup();
+    cleanup = initContactPage();
+  });
+
+  document.addEventListener("astro:before-swap", () => {
+    cleanup();
+  });
 </script>

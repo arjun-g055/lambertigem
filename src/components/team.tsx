@@ -21,15 +21,51 @@ type Advisor = {
 // ── Data ─────────────────────────────────────────────────────────────────
 
 const MEMBERS: Member[] = [
-    { name: "Vedant Kalipatnapu", role: "Co-Captain", image: "https://static.igem.wiki/teams/5612/teampage/members/vedant-hs.webp" },
-    { name: "Harsha Poonepalle", role: "Co-Captain", image: "https://static.igem.wiki/teams/5612/teampage/members/harsha-hs.webp" },
-    { name: "Shashwat Balamurali", role: "Co-Captain", image: "https://static.igem.wiki/teams/5612/teampage/members/shashwat-hs.webp" },
-    { name: "Jiwoo Han", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/jiwoo-hs.webp" },
-    { name: "Veda Vudithyala", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/veda-hs.webp" },
-    { name: "Keerthana Anumukonda", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/keerthana-hs.webp" },
-    { name: "Rohan Kaushik", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/rohan-hs.webp" },
-    { name: "Aiden Lee", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/aiden-hs.webp" },
-    { name: "Arjun Gulati", role: "Member", image: "https://static.igem.wiki/teams/5612/teampage/members/arjun-hs.webp" },
+    {
+        name: "Vedant Kalipatnapu",
+        role: "Co-Captain",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/vedant-hs.webp",
+    },
+    {
+        name: "Harsha Poonepalle",
+        role: "Co-Captain",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/harsha-hs.webp",
+    },
+    {
+        name: "Shashwat Balamurali",
+        role: "Co-Captain",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/shashwat-hs.webp",
+    },
+    {
+        name: "Jiwoo Han",
+        role: "Member",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/jiwoo-hs.webp",
+    },
+    {
+        name: "Veda Vudithyala",
+        role: "Member",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/veda-hs.webp",
+    },
+    {
+        name: "Keerthana Anumukonda",
+        role: "Member",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/keerthana-hs.webp",
+    },
+    {
+        name: "Rohan Kaushik",
+        role: "Member",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/rohan-hs.webp",
+    },
+    {
+        name: "Aiden Lee",
+        role: "Member",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/aiden-hs.webp",
+    },
+    {
+        name: "Arjun Gulati",
+        role: "Member",
+        image: "https://static.igem.wiki/teams/5612/teampage/members/arjun-hs.webp",
+    },
 ];
 
 const ADVISORS: Advisor[] = [
@@ -38,7 +74,11 @@ const ADVISORS: Advisor[] = [
 
 // ── Member Card ──────────────────────────────────────────────────────────
 
-function MemberCard({ member }: { member: Member }) {
+function MemberCard({
+    member,
+}: {
+    member: Member;
+}) {
     const isCaptain = member.role === "Co-Captain";
 
     return (
@@ -55,8 +95,8 @@ function MemberCard({ member }: { member: Member }) {
                 loading="lazy"
             />
 
-            {/* Gradient overlay — darkens on hover for bio readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0608] via-[#0D0608]/30 to-transparent group-hover:via-[#0D0608]/50 transition-all duration-500" />
+            {/* Static gradient for text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0608] via-[#0D0608]/30 to-transparent" />
 
             {/* Hover border glow */}
             <div className="absolute inset-0 rounded-xl ring-1 ring-white/[0.06] group-hover:ring-[#C92C2A]/40 group-hover:shadow-[inset_0_0_40px_rgba(201,44,42,0.08)] transition-all duration-500 pointer-events-none" />
