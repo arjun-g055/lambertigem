@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import HeroParticles from "./HeroParticles";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,7 +124,7 @@ function ProjectCard({
         className="group block"
       >
         <div
-          className={`relative overflow-hidden rounded-lg aspect-[4/3] bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
+          className={`future-frame relative overflow-hidden rounded-lg aspect-[4/3] bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
         >
           <img
             src={project.img}
@@ -165,7 +166,7 @@ function ProjectCard({
 
       {/* Award popup */}
       {showAwards && (
-        <div className="absolute top-16 right-4 z-30 w-60 rounded-xl bg-[#1A0A0E]/90 backdrop-blur-2xl border border-[#D4A853]/15 p-5 shadow-2xl shadow-black/50 award-popup">
+        <div className="future-panel absolute top-16 right-4 z-30 w-60 rounded-xl bg-[#1A0A0E]/90 backdrop-blur-2xl border border-[#D4A853]/15 p-5 shadow-2xl shadow-black/50 award-popup">
           <AwardParticles />
 
           <div className="relative z-10">
@@ -378,7 +379,7 @@ function ReelSection() {
 }
 
 // ── Main Component ───────────────────────────────────────────────────────────
-const HERO_WORDS = ["LAMBERT", "INNOVATION", "LAMBERT"];
+const HERO_WORD = "LAMBERT";
 
 export default function Landing() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -450,52 +451,30 @@ export default function Landing() {
       } catch {}
     };
 
-    // ── Hero typewriter with cycling words ──────────────────────────────
+    // ── Hero typewriter ────────────────────────────────────────────────
     const heroText = heroTextRef.current;
     const cursor = document.querySelector(".hero-cursor") as HTMLElement;
     if (!heroText || !cursor) return;
 
     const TYPE_SPEED = 0.1;
-    const DELETE_SPEED = 0.06;
     const PAUSE_AFTER_TYPE = 0.8;
-    const PAUSE_AFTER_DELETE = 0.3;
 
     const tl = gsap.timeline({ delay: 1.8 });
 
     // Show cursor
     tl.set(cursor, { opacity: 1 });
 
-    // Type and delete each word, keep the last one
-    HERO_WORDS.forEach((word, wordIdx) => {
-      const isLast = wordIdx === HERO_WORDS.length - 1;
-
-      // Type each letter
-      for (let i = 0; i < word.length; i++) {
-        tl.call(
-          () => {
-            heroText.textContent = word.slice(0, i + 1);
-            playKeystroke();
-          },
-          [],
-          `+=${i === 0 ? (wordIdx === 0 ? 0 : PAUSE_AFTER_DELETE) : TYPE_SPEED}`,
-        );
-      }
-
-      if (!isLast) {
-        // Pause then delete
-        tl.call(() => {}, [], `+=${PAUSE_AFTER_TYPE}`);
-        for (let i = word.length - 1; i >= 0; i--) {
-          tl.call(
-            () => {
-              heroText.textContent = word.slice(0, i);
-              playKeystroke();
-            },
-            [],
-            `+=${DELETE_SPEED}`,
-          );
-        }
-      }
-    });
+    // Type the hero word once, then reveal the rest of the hero
+    for (let i = 0; i < HERO_WORD.length; i++) {
+      tl.call(
+        () => {
+          heroText.textContent = HERO_WORD.slice(0, i + 1);
+          playKeystroke();
+        },
+        [],
+        `+=${i === 0 ? 0 : TYPE_SPEED}`,
+      );
+    }
 
     // Blink cursor then reveal logo + scroll indicator
     tl.to(cursor, { opacity: 0, duration: 0.3 }, `+=${PAUSE_AFTER_TYPE}`);
@@ -504,6 +483,17 @@ export default function Landing() {
 
     tl.to(".hero-igem", { opacity: 1, duration: 0.9, ease: "power3.out" });
     tl.from(".hero-igem", { scale: 0.4, duration: 0.9, ease: "back.out(1.7)" }, "<");
+    tl.to(
+      [".hero-kicker", ".hero-copy", ".hero-actions"],
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power3.out",
+      },
+      "-=0.35",
+    );
     tl.to(".hero-scroll", { opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.4");
 
     // Hero parallax
@@ -637,34 +627,71 @@ export default function Landing() {
       ────────────────────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6"
+        className="page-hero-maroon relative z-10 min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-24"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,44,42,0.03)_0%,_transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,44,42,0.06)_0%,_transparent_55%)] pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[40vh] bg-[radial-gradient(circle_at_top,_rgba(245,240,235,0.08),_transparent_70%)] pointer-events-none" />
+        <HeroParticles />
 
-        <div className="relative flex flex-col items-center select-none">
-          <h1
-            className="text-[#F5F0EB] leading-[0.85] relative flex items-baseline justify-center"
-            style={{
-              fontSize: "clamp(4rem, 14vw, 16rem)",
-              letterSpacing: "-0.06em",
-            }}
+        <div className="relative z-10 flex max-w-4xl flex-col items-center text-center">
+          <p
+            className="hero-kicker future-eyebrow rounded-full border border-[#F5F0EB]/10 bg-[#F5F0EB]/[0.03] px-4 py-2 text-[11px] font-light uppercase tracking-[0.28em] text-[#B8A99A] backdrop-blur-xl"
+            style={{ opacity: 0, transform: "translateY(20px)" }}
           >
-            <span className="hero-text" ref={heroTextRef} />
-            <span
-              className="hero-cursor inline-block w-[0.06em] bg-[#C92C2A] ml-[0.04em]"
-              style={{ height: "0.82em", opacity: 0 }}
-            />
-          </h1>
+            Lambert High School · Synthetic Biology Research
+          </p>
 
-          <img
-            src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png"
-            alt="iGEM"
-            className="hero-igem h-16 md:h-24 w-auto mt-6 drop-shadow-[0_0_20px_rgba(201,44,42,0.2)]"
-            style={{ opacity: 0 }}
-          />
+          <div className="mt-8 flex flex-col items-center select-none">
+            <h1
+              className="text-[#F5F0EB] leading-[0.85] relative flex items-baseline justify-center"
+              style={{
+                fontSize: "clamp(4rem, 14vw, 16rem)",
+                letterSpacing: "-0.06em",
+              }}
+            >
+              <span className="hero-text" ref={heroTextRef} />
+              <span
+                className="hero-cursor inline-block w-[0.06em] bg-[#C92C2A] ml-[0.04em]"
+                style={{ height: "0.82em", opacity: 0 }}
+              />
+            </h1>
+
+            <img
+              src="https://gbditp38bksey5gu.public.blob.vercel-storage.com/logo-white.png"
+              alt="iGEM"
+              className="hero-igem h-16 md:h-24 w-auto mt-6 drop-shadow-[0_0_20px_rgba(201,44,42,0.2)]"
+              style={{ opacity: 0 }}
+            />
+          </div>
+
+          <p
+            className="hero-copy mt-6 max-w-2xl text-sm font-light leading-relaxed text-[#B8A99A] md:text-base"
+            style={{ opacity: 0, transform: "translateY(20px)" }}
+          >
+            Student-led research turning synthetic biology into practical tools,
+            competition-winning projects, and real scientific momentum.
+          </p>
+
+          <div
+            className="hero-actions mt-8 flex flex-col gap-4 sm:flex-row"
+            style={{ opacity: 0, transform: "translateY(20px)" }}
+          >
+            <a
+              href="/projects"
+              className="btn-morph px-8 py-3.5 text-[14px] font-medium text-[#0D0608] bg-[#D4A853] text-center hover:bg-[#E0BB6E] transition-all duration-500"
+            >
+              Explore Projects
+            </a>
+            <a
+              href="/about"
+              className="btn-morph px-8 py-3.5 text-[14px] font-light text-[#F5F0EB] border border-[#F5F0EB]/10 bg-[#F5F0EB]/[0.02] text-center hover:border-[#F5F0EB]/25 hover:bg-[#F5F0EB]/[0.05] transition-all duration-500"
+            >
+              Meet the Team
+            </a>
+          </div>
         </div>
 
-        <div className="hero-scroll absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3" style={{ opacity: 0 }}>
+        <div className="hero-scroll absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3" style={{ opacity: 0 }}>
           <div className="w-px h-16 bg-gradient-to-b from-[#F5F0EB]/20 to-transparent relative overflow-hidden">
             <div
               className="absolute top-0 left-0 w-full h-5 bg-[#C92C2A]/60"

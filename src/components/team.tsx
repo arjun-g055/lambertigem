@@ -44,7 +44,7 @@ function MemberCard({ member }: { member: Member }) {
     return (
         <div
             data-member-card
-            className="group relative overflow-hidden rounded-xl bg-[#0D0608]"
+            className="future-frame group relative overflow-hidden rounded-xl bg-[#0D0608]"
             style={{ aspectRatio: "3 / 4" }}
         >
             {/* Photo */}
@@ -170,7 +170,7 @@ export default function Team() {
     return (
         <div ref={containerRef} className="min-h-screen text-[#F5F0EB]">
             {/* ── Hero ── */}
-            <section className="flex flex-col items-center pt-16 pb-6">
+            <section className="page-hero-maroon relative flex flex-col items-center overflow-hidden pt-16 pb-6">
                 <h1
                     data-team-title
                     className="text-[#F5F0EB] font-light leading-[0.85] tracking-[-0.06em] relative z-10"
@@ -190,7 +190,7 @@ export default function Team() {
 
                 <p
                     data-team-sub
-                    className="text-[#7A6E63] font-light mt-6 text-center text-sm tracking-[0.3em] uppercase opacity-0"
+                    className="future-eyebrow text-[#7A6E63] font-light mt-6 text-center text-sm tracking-[0.3em] uppercase opacity-0"
                     style={{ transform: "translateY(16px)" }}
                 >
                     Lambert High School · Suwanee, Georgia
@@ -201,7 +201,7 @@ export default function Team() {
             <section className="max-w-6xl mx-auto px-6 md:px-16 pt-20 pb-8">
                 <p
                     data-section-label
-                    className="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
+                    className="future-eyebrow text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
                 >
                     Leadership
                 </p>
@@ -221,7 +221,7 @@ export default function Team() {
             <section className="max-w-6xl mx-auto px-6 md:px-16 pt-8 pb-8">
                 <p
                     data-section-label
-                    className="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
+                    className="future-eyebrow text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
                 >
                     Team Members
                 </p>
@@ -241,7 +241,7 @@ export default function Team() {
             <section className="max-w-6xl mx-auto px-6 md:px-16 pt-8 pb-28">
                 <p
                     data-section-label
-                    className="text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
+                    className="future-eyebrow text-[#D4A853] text-[11px] font-light tracking-[0.3em] uppercase mb-10"
                 >
                     Advisors
                 </p>

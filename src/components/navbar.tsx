@@ -97,10 +97,10 @@ export default function Navbar() {
         {/* Desktop — floating pill */}
         <div
           ref={navPillRef}
-          className={`hidden md:flex items-center gap-1 relative rounded-full px-1.5 py-1.5 transition-all duration-500 ${
+          className={`nav-pill-future hidden md:flex items-center gap-1 relative rounded-full px-1.5 py-1.5 transition-all duration-500 ${
             scrolled
-              ? "bg-[#F5F0EB]/[0.04] backdrop-blur-2xl border border-[#F5F0EB]/[0.06] shadow-lg shadow-black/10"
-              : "bg-[#F5F0EB]/[0.02] border border-transparent"
+              ? "bg-[#F5F0EB]/[0.09] backdrop-blur-2xl border border-[#F5F0EB]/[0.12] shadow-lg shadow-black/15"
+              : "bg-[#F5F0EB]/[0.06] border border-[#F5F0EB]/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
           }`}
           onMouseLeave={() => {
             // Return indicator to active link
@@ -114,7 +114,7 @@ export default function Navbar() {
         >
           {/* Sliding indicator */}
           <div
-            className="absolute top-1.5 bottom-1.5 rounded-full bg-[#F5F0EB]/[0.06] pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            className="nav-indicator-future absolute top-1.5 bottom-1.5 rounded-full bg-[#F5F0EB]/[0.14] pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
             style={{
               left: indicator.left,
               width: indicator.width,
@@ -130,7 +130,7 @@ export default function Navbar() {
               className={`relative z-10 px-4 py-2 text-[12px] font-medium uppercase tracking-[0.1em] rounded-full transition-colors duration-200 ${
                 isActive(item.href)
                   ? "text-[#D4A853]"
-                  : "text-[#F5F0EB]/60 hover:text-[#F5F0EB]"
+                  : "text-[#F5F0EB]/75 hover:text-[#F5F0EB]"
               }`}
               onMouseEnter={() => positionIndicator(linkRefs.current[i])}
             >
@@ -158,7 +158,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className="absolute inset-0 bg-[#0D0608]/95 backdrop-blur-2xl"
+          className="absolute inset-0 bg-[rgba(20,7,11,0.95)] backdrop-blur-2xl"
           onClick={() => setOpen(false)}
         />
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen gap-8">

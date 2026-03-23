@@ -9,7 +9,7 @@ const FOOTER_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#F5F0EB]/[0.06] mt-16">
+    <footer className="footer-shell border-t border-[#F5F0EB]/[0.06] mt-16">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
           {/* Logo + tagline */}
@@ -40,7 +40,7 @@ export default function Footer() {
 
           {/* Navigate */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-[#F5F0EB] font-medium text-xs uppercase tracking-[0.2em] mb-3">
+            <h4 className="future-eyebrow text-[#F5F0EB] font-medium text-xs uppercase tracking-[0.2em] mb-3">
               Navigate
             </h4>
             <nav className="flex flex-col gap-2">
@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* For Sponsors */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-[#F5F0EB] font-medium text-xs uppercase tracking-[0.2em] mb-3">
+            <h4 className="future-eyebrow text-[#F5F0EB] font-medium text-xs uppercase tracking-[0.2em] mb-3">
               For Sponsors
             </h4>
             <nav className="flex flex-col gap-2">
@@ -73,7 +73,7 @@ export default function Footer() {
 
           {/* External */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-[#F5F0EB] font-medium text-xs uppercase tracking-[0.2em] mb-3">
+            <h4 className="future-eyebrow text-[#F5F0EB] font-medium text-xs uppercase tracking-[0.2em] mb-3">
               External
             </h4>
             <nav className="flex flex-col gap-2">

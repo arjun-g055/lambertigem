@@ -6,20 +6,20 @@ import Footer from "../components/Footer.tsx";
 
 <BaseLayout title="Page Not Found - Lambert iGEM">
   <Navbar client:load />
-  <div class="min-h-screen flex flex-col items-center justify-center px-6 relative">
+  <div class="page-hero-maroon min-h-screen flex flex-col items-center justify-center px-6 relative">
     <!-- Ambient glow -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-[#C92C2A]/8 blur-[160px] rounded-full pointer-events-none"></div>
 
-    <p class="text-[#D4A853] text-sm font-light tracking-[0.3em] uppercase mb-6">Page Not Found</p>
+    <p class="future-eyebrow text-[#D4A853] text-sm font-light tracking-[0.3em] uppercase mb-6">Page Not Found</p>
     <h1 class="font-light tracking-[-0.03em] text-[#F5F0EB] text-center mb-4" style="font-size: clamp(4rem, 10vw, 8rem);">404</h1>
     <p class="text-[#B8A99A] font-light text-center max-w-md mb-10 leading-relaxed">
       The page you're looking for doesn't exist or has been moved. Let's get you back to the research.
     </p>
     <div class="flex flex-col sm:flex-row gap-4">
-      <a href="/" class="px-8 py-3 rounded-full bg-[#D4A853] text-[#0D0608] font-medium text-sm hover:bg-[#E0BB6E] transition-colors text-center">
+      <a href="/" class="btn-morph px-8 py-3 rounded-full bg-[#D4A853] text-[#0D0608] font-medium text-sm hover:bg-[#E0BB6E] transition-colors text-center">
         Back to Home
       </a>
-      <a href="/projects" class="px-8 py-3 rounded-full border border-[#F5F0EB]/[0.12] text-[#F5F0EB] font-light text-sm hover:bg-[#F5F0EB]/5 transition-colors text-center">
+      <a href="/projects" class="btn-morph px-8 py-3 rounded-full border border-[#F5F0EB]/[0.12] text-[#F5F0EB] font-light text-sm hover:bg-[#F5F0EB]/5 transition-colors text-center">
         View Projects
       </a>
     </div>
