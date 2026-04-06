@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import HeroParticles from "./HeroParticles";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -631,7 +630,6 @@ export default function Landing() {
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,44,42,0.06)_0%,_transparent_55%)] pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-[40vh] bg-[radial-gradient(circle_at_top,_rgba(245,240,235,0.08),_transparent_70%)] pointer-events-none" />
-        <HeroParticles />
 
         <div className="relative z-10 flex max-w-4xl flex-col items-center text-center">
           <p
